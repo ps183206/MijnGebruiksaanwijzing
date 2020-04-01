@@ -83,19 +83,19 @@ namespace MijnGebruiksaanwijzing
 
                 //if (rolequery == "0")
                 //{
-                //    HomeBegeleider winB = new HomeBegeleider();
-                //    winB.Top = 0;
-                //    winB.Left = 0;
-                //    winB.Show();
-                //    this.Close();
+                //HomeBegeleider winB = new HomeBegeleider();
+                //winB.Top = 0;
+                //winB.Left = 0;
+                //winB.Show();
+                //this.Close();
                 //}
                 //else if (rolequery == "1")
                 //{
-                //    HomeLeerling winL = new HomeLeerling();
-                //    winL.Top = 0;
-                //    winL.Left = 0;
-                //    winL.Show();
-                //    this.Close();
+                //HomeLeerling winL = new HomeLeerling();
+                //winL.Top = 0;
+                //winL.Left = 0;
+                //winL.Show();
+                //this.Close();
                 //}
                 //else
                 //{
@@ -104,27 +104,41 @@ namespace MijnGebruiksaanwijzing
                 try
                 {
                     conn.Open();
-
+                    string ID = "0";
                     // query to check whether value exists
                     string sql = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
 
                     // create the command object
-                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
                     {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            // if the result set is not NULL
-                            if (reader.HasRows)
-                            {
-                                // update the existing value + the value from the text file
-                                MessageBox.Show("gelukt");
-                            }
-                            else
-                            {
-                                // insert a value from a text file
-                                MessageBox.Show("mislukt");
-                            }
-                        }
+                        ID = reader.GetString(0);
+                    }
+                    Console.WriteLine(ID);
+                    if (ID == "0")
+                    {
+                        //window shit in
+                        HomeBegeleider winB = new HomeBegeleider();
+                        winB.Top = 0;
+                        winB.Left = 0;
+                        winB.Show();
+                        this.Close();
+                    }
+                    else if (ID == "1"){
+                        //window shit in
+                        HomeLeerling winL = new HomeLeerling();
+                        winL.Top = 0;
+                        winL.Left = 0;
+                        winL.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Console.WriteLine("If u see this u fucked up");
                     }
                 }
                 finally
