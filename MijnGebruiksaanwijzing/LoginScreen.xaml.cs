@@ -75,8 +75,10 @@ namespace MijnGebruiksaanwijzing
             if (CanLogin(user, pass))
             {
                 string query = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
-                Console.WriteLine(query);
-                if (query=="0")
+
+                //Run Query
+
+                if (query == "0")
                 {
                     HomeBegeleider winB = new HomeBegeleider();
                     winB.Top = 0;
@@ -84,7 +86,7 @@ namespace MijnGebruiksaanwijzing
                     winB.Show();
                     this.Close();
                 }
-                else if (query=="1")
+                else if (query == "1")
                 {
                     HomeLeerling winL = new HomeLeerling();
                     winL.Top = 0;
