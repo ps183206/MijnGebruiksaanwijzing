@@ -12,7 +12,7 @@
     <!--push test2 -->
     <!--Button inloggen maken -->
     <Window.Background>
-        <ImageBrush ImageSource="light_wood_background_lighter.jpg"/>
+        <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
     </Window.Background>
     <Grid>
         <Border Padding="30" Background="White" Width="500" Height="370">
@@ -82,6 +82,7 @@
             </StackPanel>
         </Border>
         <Ellipse VerticalAlignment="Center" Margin="0 0 0 370" Fill="#25126E" Height="140" Width="140"/>
-        <Image Source="login_icon_white.png" VerticalAlignment="Center" Margin="0 0 0 370" Height="90" Width="90"></Image>
+        <Image Source="/Images/login_icon_white.png" VerticalAlignment="Center" Margin="0 0 0 370" Height="90" Width="90"></Image>
     </Grid>
 </Window>
+    
