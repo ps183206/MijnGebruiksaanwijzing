@@ -9,7 +9,6 @@
     <Grid>
         <!-- in het midden een stapel met kaarten maken hierin moeten teksten worden toegevoegd de kaartjes kunnen we als achtergrond houden-->
         <!-- 2 knoppen eentje moet de kaartjes toevoegen aan een linkse stapel en eentje aan de rechtse-->
-        
         <!-- button toevoegen die wanneer de stapel leeg is pas wordt laten zien en wanneer deze geklikt gaat de gebruiker door naar de gele kaartjes pagina-->
     </Grid>
 </Window>
