@@ -32,5 +32,32 @@ namespace MijnGebruiksaanwijzing.Windows
             //doorgaan naar kaarten beheer pagina
             //deze pagina sluiten
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            LoginScreen loginwindow = new LoginScreen();
+            loginwindow.Top = 0;
+            loginwindow.Left = 0;
+            loginwindow.Show();
+            this.Close();
+        }
+
+        private void btnCardWin_Click(object sender, RoutedEventArgs e)
+        {
+            KaartenBeheer CardStorage = new KaartenBeheer();
+            CardStorage.Top = 0;
+            CardStorage.Left = 0;
+            CardStorage.Show();
+            this.Close();
+        }
+
+        private void btnPlayerBase_Click(object sender, RoutedEventArgs e)
+        {
+            SpelerBeheer PlayerStorage = new SpelerBeheer();
+            PlayerStorage.Top = 0;
+            PlayerStorage.Left = 0;
+            PlayerStorage.Show();
+            this.Close();
+        }
     }
 }
