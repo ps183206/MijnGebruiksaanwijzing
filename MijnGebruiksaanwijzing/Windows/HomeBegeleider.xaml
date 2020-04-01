@@ -1,0 +1,14 @@
+﻿<Window x:Class="MijnGebruiksaanwijzing.Windows.HomeBegeleider"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
+        mc:Ignorable="d"
+        Title="HomeBegeleider" Height="450" Width="800">
+    <Grid>
+           <!-- Uitlog Button maken-->
+        <!--Kaarten beheer knop aanmaken (Doorsturen naar KaartBeheer window)-->
+        <!-- Spelers beheren knop aanmaken (Doorsturen naar SpelerBeheer window) -->
+    </Grid>
+</Window>

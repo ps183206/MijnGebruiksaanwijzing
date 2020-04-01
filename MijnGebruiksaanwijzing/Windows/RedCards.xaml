@@ -1,0 +1,14 @@
+﻿<Window x:Class="MijnGebruiksaanwijzing.Windows.RedCards"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
+        mc:Ignorable="d"
+        Title="RedCards" Height="450" Width="800">
+    <Grid>
+        <!-- in het midden een stapel met kaarten maken hierin moeten teksten worden toegevoegd de kaartjes kunnen we als achtergrond houden-->
+        <!-- 2 knoppen eentje moet de kaartjes toevoegen aan een linkse stapel en eentje aan de rechtse-->
+        <!-- button toevoegen die wanneer de stapel leeg is pas wordt laten zien en wanneer deze geklikt gaat de gebruiker door naar de gele kaartjes pagina-->
+    </Grid>
+</Window>

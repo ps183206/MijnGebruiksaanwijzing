@@ -1,0 +1,14 @@
+﻿<Window x:Class="MijnGebruiksaanwijzing.Windows.YellowCards"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
+        mc:Ignorable="d"
+        Title="YellowCards" Height="450" Width="800">
+    <Grid>
+        <!-- In het midden komen de rode kaartjes te liggen zelfde styling als die van de RedCards pagina-->
+        <!-- Onderin moeten 5 kaartjes iedere keer toegevoegd worden waar door heen gecycled kan worden deze laten de eerste 5 zien van een list-->
+        <!-- button die hidden moet blijven totdat alle rode kaartje minimaal 1 geel kaartje hebben gehad-->
+    </Grid>
+</Window>

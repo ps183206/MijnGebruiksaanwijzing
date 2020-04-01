@@ -1,0 +1,15 @@
+﻿<Window x:Class="MijnGebruiksaanwijzing.Windows.KaartenBeheer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
+        mc:Ignorable="d"
+        Title="KaartenBeheer" Height="450" Width="800">
+    <Grid>
+        <!--terug knop linksboven -->
+        <!--grid view maken voor de rode kaartjes -->
+        <!-- gridview maken voor de gele kaartjes-->
+        <!-- gridview maken voor de blauwe kaartjes-->
+    </Grid>
+</Window>
