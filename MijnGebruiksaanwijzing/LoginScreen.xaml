@@ -9,6 +9,7 @@
     <!-- Grid achtergrond netjes maken-->
     <!--Inputaanmaken met gebruikersnaam-->
     <!--Input aanmaken met wachtwoord-->
+    <!--push test -->
     <!--Button inloggen maken -->
     <Window.Background>
         <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
