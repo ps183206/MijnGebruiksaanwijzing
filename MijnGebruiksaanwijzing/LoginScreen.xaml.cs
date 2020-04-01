@@ -22,6 +22,7 @@ namespace MijnGebruiksaanwijzing
         public LoginScreen()
         {
             InitializeComponent();
+            //
             //Gegevens uit Txt's halen
             //gegevens nakijken via database
             //functie database oproepen
