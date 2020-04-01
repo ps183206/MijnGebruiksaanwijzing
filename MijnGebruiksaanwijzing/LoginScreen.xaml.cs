@@ -2,6 +2,8 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,31 +76,63 @@ namespace MijnGebruiksaanwijzing
             string pass = tbPassword.Text;
             if (CanLogin(user, pass))
             {
-                string query = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
+                //conn.Open();
+                //string rolequery = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
 
-                //Run Query
+                //MySqlCommand cmd = new MySqlCommand(rolequery, conn);
 
-                if (query == "0")
+                //if (rolequery == "0")
+                //{
+                //    HomeBegeleider winB = new HomeBegeleider();
+                //    winB.Top = 0;
+                //    winB.Left = 0;
+                //    winB.Show();
+                //    this.Close();
+                //}
+                //else if (rolequery == "1")
+                //{
+                //    HomeLeerling winL = new HomeLeerling();
+                //    winL.Top = 0;
+                //    winL.Left = 0;
+                //    winL.Show();
+                //    this.Close();
+                //}
+                //else
+                //{
+                //    MessageBox.Show(rolequery);
+                //}
+                try
                 {
-                    HomeBegeleider winB = new HomeBegeleider();
-                    winB.Top = 0;
-                    winB.Left = 0;
-                    winB.Show();
-                    this.Close();
+                    conn.Open();
+
+                    // query to check whether value exists
+                    string sql = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
+
+                    // create the command object
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            // if the result set is not NULL
+                            if (reader.HasRows)
+                            {
+                                // update the existing value + the value from the text file
+                                MessageBox.Show("gelukt");
+                            }
+                            else
+                            {
+                                // insert a value from a text file
+                                MessageBox.Show("mislukt");
+                            }
+                        }
+                    }
                 }
-                else if (query == "1")
+                finally
                 {
-                    HomeLeerling winL = new HomeLeerling();
-                    winL.Top = 0;
-                    winL.Left = 0;
-                    winL.Show();
-                    this.Close();
+                    // always close connection when done
+                    conn.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Rol niet gevonden.");
-                }
-                
+
             }
             else
             {
