@@ -13,7 +13,6 @@
     <Window.Background>
         <ImageBrush ImageSource="light_wood_background_lighter.jpg"/>
     </Window.Background>
-    
     <Grid>
         <Border Padding="30" Background="White" Width="500" Height="370">
             <StackPanel VerticalAlignment="Bottom">
