@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MijnGebruiksaanwijzing.Windows;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace MijnGebruiksaanwijzing
         //wanneer de gegevens goed zijn doorsturen naar de bijbehorende pagina (HomeLeerling / HomeBegeleider)
         //gebruikersnaam mee geven naar Leerlinghome
         //window sluiten
+
         private MySqlConnection conn;
         private string server;
         private string database;
@@ -72,11 +74,29 @@ namespace MijnGebruiksaanwijzing
             string pass = tbPassword.Text;
             if (CanLogin(user, pass))
             {
-                WelcomePage win2 = new WelcomePage();
-                win2.Top = 200;
-                win2.Left = 500;
-                win2.Show();
-                this.Close();
+                string query = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
+                Console.WriteLine(query);
+                if (query=="0")
+                {
+                    HomeBegeleider winB = new HomeBegeleider();
+                    winB.Top = 0;
+                    winB.Left = 0;
+                    winB.Show();
+                    this.Close();
+                }
+                else if (query=="1")
+                {
+                    HomeLeerling winL = new HomeLeerling();
+                    winL.Top = 0;
+                    winL.Left = 0;
+                    winL.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Rol niet gevonden.");
+                }
+                
             }
             else
             {
