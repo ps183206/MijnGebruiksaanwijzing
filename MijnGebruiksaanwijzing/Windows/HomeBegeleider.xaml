@@ -11,10 +11,11 @@
     </Window.Background>
     <Grid>
         <!-- Uitlog Button maken-->
+        <TextBlock Text="Welkom Admin" Margin="500,215,500,719" FontSize="75" TextAlignment="center"></TextBlock>
         <Button x:Name="btnLogout" Content="Uitloggen" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnLogout_Click" />
         <!--Kaarten beheer knop aanmaken (Doorsturen naar KaartBeheer window)-->
-        <Button x:Name="btnCardWin" Content="Kaarten Beheren" Background="White" Foreground="Black" Margin="574,434,628,481" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnCardWin_Click" />
+        <Button x:Name="btnCardWin" Content="Kaarten Beheren" Background="White" Foreground="Black" Margin="575,434,575,481" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnCardWin_Click" />
         <!-- Spelers beheren knop aanmaken (Doorsturen naar SpelerBeheer window) -->
-        <Button x:Name="btnPlayerBase" Content="Spelers Beheren" Background="White" Foreground="Black" Margin="574,608,628,307" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnPlayerBase_Click" />
+        <Button x:Name="btnPlayerBase" Content="Spelers Beheren" Background="White" Foreground="Black" Margin="575,608,575,307" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnPlayerBase_Click" />
     </Grid>
 </Window>
