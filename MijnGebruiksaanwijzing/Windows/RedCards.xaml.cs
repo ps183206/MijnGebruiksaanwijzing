@@ -29,5 +29,14 @@ namespace MijnGebruiksaanwijzing.Windows
 
 
         }
+
+        private void btnVolgende_Click(object sender, RoutedEventArgs e)
+        {
+            YellowCards yellowCards = new YellowCards();
+            yellowCards.Top = 0;
+            yellowCards.Left = 0;
+            yellowCards.Show();
+            this.Close();
+        }
     }
 }

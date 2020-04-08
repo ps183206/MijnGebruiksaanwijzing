@@ -32,5 +32,14 @@ namespace MijnGebruiksaanwijzing.Windows
             //doorgaan naar volgend scherm
             //dit scherm sluiten
         }
+
+        private void btnVolgende_Click(object sender, RoutedEventArgs e)
+        {
+            BlueCards blueCards = new BlueCards();
+            blueCards.Top = 0;
+            blueCards.Left = 0;
+            blueCards.Show();
+            this.Close();
+        }
     }
 }

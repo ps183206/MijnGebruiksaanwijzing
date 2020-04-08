@@ -5,10 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="YellowCards" Height="450" Width="800">
+        Title="YellowCards" Height="1080" Width="1920" WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
+    </Window.Background>
     <Grid>
         <!-- In het midden komen de rode kaartjes te liggen zelfde styling als die van de RedCards pagina-->
         <!-- Onderin moeten 5 kaartjes iedere keer toegevoegd worden waar door heen gecycled kan worden deze laten de eerste 5 zien van een list-->
         <!-- button die hidden moet blijven totdat alle rode kaartje minimaal 1 geel kaartje hebben gehad-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBlock Margin="0,300,0,0" Text="Past wel bij mijn probleem" FontSize="36" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="5">
+            <TextBlock Margin="0,300,0,0" Text="Past niet bij mijn probleem" FontSize="36" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" Background="White" Margin="25">
+            <Border BorderThickness="5" BorderBrush="red" Margin="20" CornerRadius="10">
+                <TextBlock Margin="20"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="25">
+            <Border BorderThickness="5" BorderBrush="Yellow" Margin="20" CornerRadius="10">
+                <TextBlock Margin="20"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="25">
+            <Button Background="LightGreen" Width="100" Height="100" Content="&#x02C2;" FontSize="72"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" Background="White" Margin="25">
+            <Border BorderThickness="5" BorderBrush="Yellow" Margin="20" CornerRadius="10">
+                <TextBlock Margin="20"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3" Margin="25">
+            <Button Background="IndianRed" Width="100" Height="100" Content="&#x02C3;" FontSize="72"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4" Background="White" Margin="25">
+            <Border BorderThickness="5" BorderBrush="Yellow" Margin="20" CornerRadius="10">
+                <TextBlock Margin="20"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" Margin="0,0,0,200">
+            <Button Name="btnVolgende" Background="White" Margin="25" MaxHeight="75" Content="Volgende" FontSize="36" Click="btnVolgende_Click"/>
+        </Grid>
     </Grid>
 </Window>

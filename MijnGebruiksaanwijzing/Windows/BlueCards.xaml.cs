@@ -23,5 +23,14 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             InitializeComponent();
         }
+
+        private void btnKlaar_Click(object sender, RoutedEventArgs e)
+        {
+            HomeLeerling homeleerling = new HomeLeerling();
+            homeleerling.Top = 0;
+            homeleerling.Left = 0;
+            homeleerling.Show();
+            this.Close();
+        }
     }
 }
