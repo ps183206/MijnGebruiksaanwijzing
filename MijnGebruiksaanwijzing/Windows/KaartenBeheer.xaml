@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="KaartenBeheer" Height="450" Width="800">
+        Title="KaartenBeheer" Height="1080" Width="1920">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
+    </Window.Background>
     <Grid>
         <!--terug knop linksboven -->
+        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold"  />
         <!--grid view maken voor de rode kaartjes -->
         <!-- gridview maken voor de gele kaartjes-->
         <!-- gridview maken voor de blauwe kaartjes-->

@@ -5,11 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="SpelerBeheer" Height="450" Width="800">
+        Title="SpelerBeheer" Height="1080" Width="1920">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
+    </Window.Background>
     <Grid>
         <!--Terugknop aanmaken naar HomeBegeleider -->
-        <!--Gridview met alle spelers -->
-
+        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <!--Combobox om te kiezen wat voor een account aangemaakt moet worden -->
+        <RadioButton Margin="200,5,5,5" GroupName="AccountType" Content="Leerling" IsChecked="True"/>
+        <RadioButton GroupName="AccountType" Content="Administrator" />
         <!--Input Naam nieuwe leerling -->
         <!--Input gebruikersnaam nieuwer leerling -->
         <!--Input wachtwoord nieuwe leerling -->
