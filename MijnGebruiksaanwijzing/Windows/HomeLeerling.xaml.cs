@@ -33,5 +33,19 @@ namespace MijnGebruiksaanwijzing.Windows
             //Naam opzoeken in database met de gebruikersnaam van de leerling
 
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            LoginScreen loginwindow = new LoginScreen();
+            loginwindow.Top = 0;
+            loginwindow.Left = 0;
+            loginwindow.Show();
+            this.Close();
+        }
+
+        private void btnStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            popupStart.IsOpen = true;
+        }
     }
 }
