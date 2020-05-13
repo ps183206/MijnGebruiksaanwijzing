@@ -47,5 +47,10 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             popupStart.IsOpen = true;
         }
+
+        private void Label_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            popupStart.IsOpen = false;
+        }
     }
 }

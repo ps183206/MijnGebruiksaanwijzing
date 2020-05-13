@@ -24,13 +24,16 @@
         <Button x:Name="btnPlayerBase" Content="Resultaten bekijken" Background="White" Foreground="Black" Margin="575,608,575,307" Padding="8" FontSize="50" FontWeight="SemiBold"/>
         
         <!-- Pop-up om een keuze te maken van het type spel-->
-        <Popup x:Name="popupStart" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="300" OpacityMask="White">
-            <StackPanel Background="White" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="Waarvoor speel je?" Foreground="#D60096" FontSize="40" FontWeight="SemiBold" HorizontalAlignment="Center"></Label>
-                <StackPanel Orientation="Horizontal">
-                    <Button Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
-                    <Button Background="#D60096" Content="Stage" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
-                </StackPanel>
+        <Popup x:Name="popupStart" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="300" IsOpen="False" Placement="Center">
+            <StackPanel Background="White" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+              <DockPanel LastChildFill="True">
+                <Label Content="Waarvoor speel je?" Foreground="#D60096" FontSize="40" FontWeight="SemiBold" Margin="115 0 0 0" VerticalAlignment="Center"></Label>
+                <Label Content=" X " Foreground="#777777" FontSize="60" FontWeight="Light" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" MouseUp="Label_MouseUp"></Label>
+              </DockPanel>
+              <DockPanel>
+                    <Button DockPanel.Dock="Left" Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
+                  <Button DockPanel.Dock="Right" Background="#D60096" Content="Stage" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
+                </DockPanel>
             </StackPanel>
         </Popup>
     </Grid>
