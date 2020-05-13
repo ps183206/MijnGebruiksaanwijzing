@@ -52,5 +52,27 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             popupStart.IsOpen = false;
         }
+
+        private void btnStartSchool_Click(object sender, RoutedEventArgs e)
+        {
+            popupStart.IsOpen = false;
+
+            TutorialWindow tutorialwindow = new TutorialWindow();
+            tutorialwindow.Top = 0;
+            tutorialwindow.Left = 0;
+            tutorialwindow.Show();
+            this.Close();
+        }
+
+        private void btnStartInternship_Click(object sender, RoutedEventArgs e)
+        {
+            popupStart.IsOpen = false;
+
+            TutorialWindow tutorialwindow = new TutorialWindow();
+            tutorialwindow.Top = 0;
+            tutorialwindow.Left = 0;
+            tutorialwindow.Show();
+            this.Close();
+        }
     }
 }

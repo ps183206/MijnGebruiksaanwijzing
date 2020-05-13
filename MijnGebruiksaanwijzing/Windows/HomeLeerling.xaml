@@ -31,8 +31,8 @@
                 <Label Content=" X " Foreground="#777777" FontSize="60" FontWeight="Light" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" MouseUp="Label_MouseUp"></Label>
               </DockPanel>
               <DockPanel>
-                    <Button DockPanel.Dock="Left" Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
-                  <Button DockPanel.Dock="Right" Background="#D60096" Content="Stage" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold"></Button>
+                    <Button x:Name="btnStartSchool" DockPanel.Dock="Left" Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold" Click="btnStartSchool_Click"></Button>
+                  <Button x:Name="btnStartInternship" DockPanel.Dock="Right" Background="#D60096" Content="Stage" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold" Click="btnStartInternship_Click"></Button>
                 </DockPanel>
             </StackPanel>
         </Popup>
