@@ -85,6 +85,9 @@
     <Compile Include="Windows\BlueCards.xaml.cs">
       <DependentUpon>BlueCards.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EindResultaat.xaml.cs">
+      <DependentUpon>EindResultaat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\HomeBegeleider.xaml.cs">
       <DependentUpon>HomeBegeleider.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\BlueCards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EindResultaat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
