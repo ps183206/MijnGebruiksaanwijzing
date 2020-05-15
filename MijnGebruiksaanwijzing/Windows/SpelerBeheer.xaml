@@ -10,14 +10,37 @@
         <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
     </Window.Background>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition Width="241*"/>
+        </Grid.ColumnDefinitions>
+
         <!--Terugknop aanmaken naar HomeBegeleider -->
-        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <RadioButton Name="rdbLeerling" FontSize="12" Content="Leerling" Margin="548,174,82,839" IsChecked="True">
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+            </RadioButton.RenderTransform>
+        </RadioButton>
+        <RadioButton Name="rdbAdmin" FontSize="12" Content="Administrator" Margin="871,174,851,839" Grid.ColumnSpan="2">
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+            </RadioButton.RenderTransform>
+        </RadioButton>
+        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="740,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnBack_Click" Grid.Column="1"  />
         <!--Combobox om te kiezen wat voor een account aangemaakt moet worden -->
-        <RadioButton Margin="200,5,5,5" GroupName="AccountType" Content="Leerling" IsChecked="True"/>
-        <RadioButton GroupName="AccountType" Content="Administrator" />
+        <TextBlock Width="800" Height="40" FontSize="28" Text="Achternaam" FontFamily="Arial" Margin="548,411,564,598" Grid.ColumnSpan="2"/>
+        <TextBlock Width="800" Height="40" FontSize="28" Text="Voornaam" FontFamily="Arial" Margin="548,260,564,749" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbWachtwoord" Width="800" Height="75" Margin="548,756,564,218" Grid.ColumnSpan="2"/>
         <!--Input Naam nieuwe leerling -->
+        <TextBlock Width="800" Height="40" FontSize="28" Text="Wachtwoord" FontFamily="Arial" Margin="548,711,564,298" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbGebruikersnaam" Width="800" Height="75" Margin="548,605,564,369" Grid.ColumnSpan="2"/>
         <!--Input gebruikersnaam nieuwer leerling -->
+        <TextBlock Width="800" Height="40" FontSize="28" Text="Gebruikersnaam" FontFamily="Arial" Margin="548,560,564,449" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbAchternaam" Width="800" Height="75" Margin="548,456,564,518" Grid.ColumnSpan="2"/>
         <!--Input wachtwoord nieuwe leerling -->
+        <TextBlock Padding="10,10,10,10"  FontSize="40" Text="Nieuwe Gebruiker Toevoegen"  FontFamily="Arial" Margin="548,56,564,924" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbVoornaam" Width="800" Height="75"  Margin="548,305,564,669" Grid.ColumnSpan="2"/>
         <!--Button accept new leerling -->
+        <Button x:Name="btnAccept" Content="Nieuwe Gebruiker Aanmaken" Background="Green" Foreground="White" Margin="732,883,777,96" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnAccept_Click" Grid.ColumnSpan="2"  />
     </Grid>
 </Window>
