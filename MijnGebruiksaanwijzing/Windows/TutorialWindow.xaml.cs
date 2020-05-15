@@ -21,12 +21,29 @@ namespace MijnGebruiksaanwijzing.Windows
     {
         public TutorialWindow()
         {
-            InitializeComponent();
-            //Terug naar leerling home screen
-            //deze pagina sluiten
-
-            //verder naar de beginpagina van het spel
-            //deze pagina sluiten
+            InitializeComponent(); 
         }
+
+        //Terug naar leerling home screen
+        //deze pagina sluiten
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            HomeLeerling homeleerling = new HomeLeerling();
+            homeleerling.Top = 0;
+            homeleerling.Left = 0;
+            homeleerling.Show();
+            this.Close();
+        }
+
+        //verder naar de beginpagina van het spel
+        //deze pagina sluiten
+        private void btnContinue_Click(object sender, RoutedEventArgs e)
+        {
+            RedCards redcards = new RedCards();
+            redcards.Top = 0;
+            redcards.Left = 0;
+            redcards.Show();
+            this.Close();
+        }    
     }
 }

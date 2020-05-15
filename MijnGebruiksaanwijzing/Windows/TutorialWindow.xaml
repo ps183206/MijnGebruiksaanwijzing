@@ -5,11 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="TutorialWindow" Height="450" Width="800">
+        Title="TutorialWindow" Height="1080" Width="1920" WindowState="Maximized">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
+    </Window.Background>
+
     <Grid>
+
         <!-- Terug button aanmaken die terug gaan naar leerling home-->
-        <!-- Button doorgaan maken die het spel begint-->
+        <Button x:Name="btnBack" Content="Terug" Width="120" Height="50" Background="#25126E" Foreground="White" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20" Click="btnBack_Click"></Button>
         <!-- Stuk tekst met de uitleg daarop-->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="160 0 160 0">
+            <Label HorizontalAlignment="Center" FontSize="75" Margin="0 0 0 40">Zo werkt het:</Label>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="38" Margin="30">Je krijgt telkens een rode kaart met een probleem te zien. Wanneer jij denkt dat het probleem bij jou past, verschuif je deze naar links. Als het probleem niet bij jou past, verschuif je het naar rechts.</TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="38" Margin="30">Vervolgens krijg je gele kaarten met een oplossing. De gele kaarten kunnen gekoppeld worden aan een probleem die jij hebt uitgekozen door de oplossing naar het probleem te slepen.</TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="38" Margin="30">Als laatst kunnen blauwe kaarten aan een probleem en oplossing gekoppeld worden. Hier staan personen op die jou zouden kunnen helpen met jouw probleem en oplossing.</TextBlock>
+            <!-- Button doorgaan maken die het spel begint-->
+            <Button x:Name="btnContinue" Content="Doorgaan" Width="500" Height="70" FontSize="40" Margin="0 40 0 0" Background="White" Click="btnContinue_Click"></Button>
+        </StackPanel>
         
     </Grid>
 </Window>
