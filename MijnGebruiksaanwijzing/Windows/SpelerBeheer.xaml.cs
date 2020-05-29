@@ -22,18 +22,50 @@ namespace MijnGebruiksaanwijzing.Windows
         public SpelerBeheer()
         {
             InitializeComponent();
-            //terugknop terug naar HomeBegeleider
-            //deze window sluiten
 
-            //Gridview opvullen vanuit de database
-            
-            //SelectedItem Gridview met verwijderen of editen van een account
+        }
 
-            //Input naam & gebruikersnaam en wachtwoord ophalen en in strings zetten
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            bool Admin = false;
+            if (tbVoornaam.Text == "")
+            {
+                MessageBox.Show("U moet een Voornaam invullen");
+            }
+            else if (tbAchternaam.Text == "")
+            {
+                MessageBox.Show("U moet een Achternaam invullen");
+            }
+            else if (tbGebruikersnaam.Text == "")
+            {
+                MessageBox.Show("U moet een Gebruikersnaam invullen");
+            }
+            else if (tbWachtwoord.Text == "")
+            {
+                MessageBox.Show("U moet een Wachtwoord invullen");
+            }
+            else
+            {
+                if (rdbAdmin.IsChecked == true)
+                {
+                    Admin = true;
+                }
+                else
+                {
+                    Admin = false;
+                }
 
-            //ButtonLeerling Add leerling toevoegen aan de database.
+                //TODO NADAT DATABASE AFGEMAAKT IS EN GEGEVENS MEE GEGEVEN KUNNEN WORDEN
+            }
+        }
 
-            //database refreshen zodat de nieuwe leerling gezien kan worden in de lijst
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            HomeBegeleider HomeB = new HomeBegeleider();
+            HomeB.Top = 0;
+            HomeB.Left = 0;
+            HomeB.Show();
+            this.Close();
         }
     }
 }
