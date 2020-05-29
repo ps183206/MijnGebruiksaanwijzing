@@ -26,5 +26,14 @@ namespace MijnGebruiksaanwijzing.Windows
             // GridView/ListView laten vullen met de resultaten van het gespeelde spel
             // De knop alle resultaten + aanvullingen op laten slaan in de database
         }
+
+        private void btnSaveResult_Click(object sender, RoutedEventArgs e)
+        {
+            HomeLeerling winL = new HomeLeerling();
+            winL.Top = 0;
+            winL.Left = 0;
+            winL.Show();
+            this.Close();
+        }
     }
 }
