@@ -191,14 +191,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Windows\Images\light_wood_background_lighter.jpg" />
+    <Resource Include="Images\light_wood_background_lighter.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Windows\Images\login_icon_white.png" />
+    <Resource Include="Images\login_icon_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Windows\Images\green_arrow.png" />
-    <Resource Include="Windows\Images\red_arrow.png" />
+    <Resource Include="Images\green_arrow.png" />
+    <Resource Include="Images\red_arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
