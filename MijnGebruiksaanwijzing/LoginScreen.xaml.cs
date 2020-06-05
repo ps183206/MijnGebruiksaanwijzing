@@ -122,18 +122,18 @@ namespace MijnGebruiksaanwijzing
                     if (ID == "0")
                     {
                         //window shit in
-                        HomeBegeleider winB = new HomeBegeleider();
-                        winB.Top = 0;
-                        winB.Left = 0;
-                        winB.Show();
+                        HomeBegeleider homebegeleider = new HomeBegeleider();
+                        homebegeleider.Top = 0;
+                        homebegeleider.Left = 0;
+                        homebegeleider.Show();
                         this.Close();
                     }
                     else if (ID == "1"){
                         //window shit in
-                        HomeLeerling winL = new HomeLeerling();
-                        winL.Top = 0;
-                        winL.Left = 0;
-                        winL.Show();
+                        HomeLeerling homeleerling = new HomeLeerling();
+                        homeleerling.Top = 0;
+                        homeleerling.Left = 0;
+                        homeleerling.Show();
                         this.Close();
                     }
                     else

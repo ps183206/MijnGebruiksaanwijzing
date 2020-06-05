@@ -74,5 +74,14 @@ namespace MijnGebruiksaanwijzing.Windows
             tutorialwindow.Show();
             this.Close();
         }
+
+        private void btnCheckResults_Click(object sender, RoutedEventArgs e)
+        {
+            EindResultaat eindresultaat = new EindResultaat();
+            eindresultaat.Top = 0;
+            eindresultaat.Left = 0;
+            eindresultaat.Show();
+            this.Close();
+        }
     }
 }
