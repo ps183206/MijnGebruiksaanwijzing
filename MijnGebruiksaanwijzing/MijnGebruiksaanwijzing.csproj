@@ -107,6 +107,9 @@
     <Compile Include="Windows\TutorialWindow.xaml.cs">
       <DependentUpon>TutorialWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ViewResultaten.xaml.cs">
+      <DependentUpon>ViewResultaten.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\YellowCards.xaml.cs">
       <DependentUpon>YellowCards.xaml</DependentUpon>
     </Compile>
@@ -141,7 +144,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
@@ -179,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ViewResultaten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\YellowCards.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +195,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\login_icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\green_arrow.png" />
+    <Resource Include="Images\red_arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
