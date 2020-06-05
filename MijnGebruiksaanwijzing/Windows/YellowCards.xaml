@@ -42,8 +42,8 @@
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Margin="25">
-            <!--<Button Background="LightGreen" Width="100" Height="100" Content="&#x02C2;" FontSize="72"/>-->
-            <Image Source="/Images/green_arrow.png" Width="125"/>
+            <!--<Image Source="/Images/green_arrow.png" Width="125"/>-->
+            <Button Width="180px" Height="75px" Background="LightGreen" Content="Past Wel Bij Mij" FontSize="20"></Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2" Background="White" Margin="25">
             <Border BorderThickness="3" BorderBrush="#FFCC00" Margin="15" CornerRadius="10">
@@ -51,8 +51,8 @@
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3" Margin="25">
-            <!--<Button Background="IndianRed" Width="100" Height="100" Content="&#x02C3;" FontSize="72"/>-->
-            <Image Source="/Images/red_arrow.png" Width="125"/>
+            <!--<Image Source="/Images/red_arrow.png" Width="125"/>-->
+            <Button Width="180px" Height="75px" Background="salmon" Content="Past Niet Bij Mij" FontSize="20"></Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4" Background="White" Margin="25">
             <Border BorderThickness="3" BorderBrush="#FFCC00" Margin="15" CornerRadius="10" Opacity="0.4">
@@ -61,7 +61,6 @@
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <!-- Als er tijd over is -->
                 <!--<Label Content="1/50" FontSize="40" HorizontalAlignment="Center"></Label>-->
                 <Button Name="btnVolgende" Background="White" Margin="25" Height="60" Content="Volgende" FontSize="36" Click="btnVolgende_Click"/>
             </StackPanel>
