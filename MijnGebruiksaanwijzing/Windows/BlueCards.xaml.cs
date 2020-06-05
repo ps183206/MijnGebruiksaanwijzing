@@ -32,5 +32,10 @@ namespace MijnGebruiksaanwijzing.Windows
             homeleerling.Show();
             this.Close();
         }
+
+        private void btnVolgende_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
