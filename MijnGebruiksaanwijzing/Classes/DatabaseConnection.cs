@@ -14,7 +14,7 @@ namespace MijnGebruiksaanwijzing.Classes
             new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
         int role = 1;
 
-        public void AddPerson(string naam, string achternaam, string username, string password, bool admin)
+        public void AddCard(string naam, string achternaam, string username, string password, bool admin)
         {
             if(admin == true)
             {
