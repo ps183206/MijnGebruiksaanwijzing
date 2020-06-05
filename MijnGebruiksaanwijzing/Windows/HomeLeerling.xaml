@@ -12,16 +12,16 @@
     </Window.Background>
 
     <Grid>
-        <TextBlock Text="Welkom Leerling" Margin="500,215,500,719" FontSize="75" TextAlignment="center"></TextBlock>
+        <TextBlock Text="Welkom!" Margin="500,215,500,719" FontSize="75" TextAlignment="center"></TextBlock>
         
         <!--button rechtsboven in de hoek om uit te loggen -->
-        <Button x:Name="btnLogout" Content="Uitloggen" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnLogout_Click" />
+        <!--<Button x:Name="btnLogout" Content="Uitloggen" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnLogout_Click" />-->
         
         <!-- Knop in het midden voor het beginnen van het spel-->
-        <Button x:Name="btnStartGame" Content="Spel starten" Background="White" Foreground="Black" Margin="575,434,575,481" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnStartGame_Click" />
+        <Button x:Name="btnStartGame" Content="Start spel" Background="White" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="8" Width="750" Height="150" FontSize="50" FontWeight="SemiBold" Click="btnStartGame_Click" />
         
         <!-- knop onder de begin knop waar de resultaten in gezet worden-->
-        <Button x:Name="btnCheckResults" Content="Resultaten bekijken" Background="White" Foreground="Black" Margin="575,608,575,307" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnCheckResults_Click"/>
+        <!--<Button x:Name="btnCheckResults" Content="Resultaten bekijken" Background="White" Foreground="Black" Margin="575,608,575,307" Padding="8" FontSize="50" FontWeight="SemiBold" Click="btnCheckResults_Click"/>-->
         
         <!-- Pop-up om een keuze te maken van het type spel-->
         <Popup x:Name="popupStart" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="300" IsOpen="False" Placement="Center">
