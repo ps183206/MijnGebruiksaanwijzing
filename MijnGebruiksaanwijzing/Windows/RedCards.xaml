@@ -32,7 +32,7 @@
             <TextBlock Margin="0,300,0,0" FontSize="36" HorizontalAlignment="Center" FontWeight="Bold">Past <Underline>niet</Underline> bij mij</TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="25">
-            <Border BorderThickness="3" BorderBrush="Red" Margin="15" CornerRadius="10">
+            <Border BorderThickness="3" BorderBrush="#FF5D5D" Margin="15" CornerRadius="10">
                 <TextBlock Margin="20"/>
             </Border>
         </Grid>
@@ -41,7 +41,7 @@
             <Image Source="C:\Users\Patrick\Source\Repos\ps183206\MijnGebruiksaanwijzing\MijnGebruiksaanwijzing\Images\green_arrow.png" Width="125"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2" Background="White" Margin="25">
-            <Border BorderThickness="3" BorderBrush="Red" Margin="15" CornerRadius="10">
+            <Border BorderThickness="3" BorderBrush="#FF5D5D" Margin="15" CornerRadius="10">
                 <TextBlock Margin="20"/>
             </Border>
         </Grid>
@@ -50,7 +50,7 @@
             <Image Source="C:\Users\Patrick\Source\Repos\ps183206\MijnGebruiksaanwijzing\MijnGebruiksaanwijzing\Images\red_arrow.png" Width="125"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4" Background="White" Margin="25">
-            <Border BorderThickness="3" BorderBrush="Red" Margin="15" CornerRadius="10">
+            <Border BorderThickness="3" BorderBrush="#FF5D5D" Margin="15" CornerRadius="10">
                 <TextBlock Margin="20"/>
             </Border>
         </Grid>
