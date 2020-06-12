@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="RedCards" Height="1080" Width="1920" WindowState="Maximized">
+        Title="RedCards" Height="1080" Width="1920" WindowState="Maximized"
+        Loaded="RedCards_IsLoaded">
     <Window.Background>
         <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
     </Window.Background>

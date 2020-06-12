@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MijnGebruiksaanwijzing.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class RedCards : Window
     {
-        List<string> PastWelRedList = new List<string>();
-        List<string> RedCardsList = new List<string>();
+        List<string> redCards = new List<string>();
 
+        List<string> selectedRedCards = new List<string>();
+
+        int cardCount = 0;
 
         public RedCards()
         {
@@ -30,7 +33,11 @@ namespace MijnGebruiksaanwijzing.Windows
             //nadat het kaartje toegevoegd is aan de list die meegenomen wordt dan wordt deze verwijderd uit de andere list
             //wanneer er op de rode knop wordt gedrukt dan wordt het kaartje verwijderd van de beginlist
             //wanneer het hele lijstje leeg is dan komt de button doorgaan te voor schijn en kan deze geklikt worden om verder te gaan
+        }
 
+        private void RedCards_IsLoaded(object sender, RoutedEventArgs e)
+        {
+            tbRed.Text = redCards[cardCount].ToString();
         }
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
@@ -40,16 +47,18 @@ namespace MijnGebruiksaanwijzing.Windows
             yellowCards.Left = 0;
             yellowCards.Show();
             this.Close();
+
         }
 
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbRed.Text;
-            PastWelRedList.Add(tbPastWel.Text);
+            selectedRedCards.Add(tbPastWel.Text);
 
             try
             {
-
+                cardCount++;
+                tbRed.Text = redCards[cardCount];
             }
             catch (Exception)
             {
@@ -66,7 +75,7 @@ namespace MijnGebruiksaanwijzing.Windows
 
             try
             {
-
+                
             }
             catch (Exception)
             {
@@ -76,5 +85,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 btnVolgende.IsEnabled = true;
             }
         }
+
+
     }
 }

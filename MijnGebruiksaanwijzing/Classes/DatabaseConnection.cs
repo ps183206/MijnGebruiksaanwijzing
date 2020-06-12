@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MijnGebruiksaanwijzing.Classes
 {
@@ -28,6 +30,16 @@ namespace MijnGebruiksaanwijzing.Classes
 
             conn.Close();
 
+        }
+
+        public void GetRedCardsList()
+        {
+            //List<Card> redCards = new List<Card>();
+
+            //foreach (DataRow dr in dt.Rows)  // dt is a DataTable
+            //{
+            //    redCards.Add(new Card { ID = int.Parse(dr["CardID"].ToString()), Color = dr["CardColor"].ToString(), Type = dr["CardType"].ToString(), Content = dr["CardDesc"].ToString() });
+            //}
         }
     }
 }
