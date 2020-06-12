@@ -22,6 +22,13 @@ namespace MijnGebruiksaanwijzing.Windows
         public KaartenBeheer()
         {
             InitializeComponent();
+            //CardID = AI
+            //CardDesc = Description Content van de kaarten
+            //CardColor = Cardkleur
+            //CardType = Stage/School
+
+
+
             //Zorgen dat alle listviews gevuld worden met de gegevens vanuit de database
             //terugknop werkend maken
 
