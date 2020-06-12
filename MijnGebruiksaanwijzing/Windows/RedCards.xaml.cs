@@ -19,6 +19,10 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class RedCards : Window
     {
+        List<string> PastWelRedList = new List<string>();
+        List<string> RedCardsList = new List<string>();
+
+
         public RedCards()
         {
             InitializeComponent();
@@ -26,7 +30,6 @@ namespace MijnGebruiksaanwijzing.Windows
             //nadat het kaartje toegevoegd is aan de list die meegenomen wordt dan wordt deze verwijderd uit de andere list
             //wanneer er op de rode knop wordt gedrukt dan wordt het kaartje verwijderd van de beginlist
             //wanneer het hele lijstje leeg is dan komt de button doorgaan te voor schijn en kan deze geklikt worden om verder te gaan
-
 
         }
 
@@ -37,6 +40,41 @@ namespace MijnGebruiksaanwijzing.Windows
             yellowCards.Left = 0;
             yellowCards.Show();
             this.Close();
+        }
+
+        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastWel.Text = tbRed.Text;
+            PastWelRedList.Add(tbPastWel.Text);
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbRed.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
+        }
+
+        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastNiet.Text = tbRed.Text;
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbRed.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
         }
     }
 }
