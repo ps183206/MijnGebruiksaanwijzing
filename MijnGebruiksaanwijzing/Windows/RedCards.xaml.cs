@@ -19,8 +19,8 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class RedCards : Window
     {
-        List<string> PastWelList = new List<string>();
-        List<string> RedList = new List<string>();
+        List<string> PastWelRedList = new List<string>();
+        List<string> RedCardsList = new List<string>();
 
 
         public RedCards()
@@ -45,7 +45,7 @@ namespace MijnGebruiksaanwijzing.Windows
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbRed.Text;
-            PastWelList.Add(tbPastWel.Text);
+            PastWelRedList.Add(tbPastWel.Text);
 
             try
             {

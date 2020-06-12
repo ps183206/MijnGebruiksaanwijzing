@@ -18,13 +18,16 @@ namespace MijnGebruiksaanwijzing.Windows
     /// Interaction logic for BlueCards.xaml
     /// </summary>
     public partial class BlueCards : Window
-    {
+    { 
+        List<string> PastWelBlueList = new List<string>();
+        List<string> BlueCardsList = new List<string>();
+
         public BlueCards()
         {
             InitializeComponent();
         }
 
-        private void btnKlaar_Click(object sender, RoutedEventArgs e)
+        private void btnVolgende_Click(object sender, RoutedEventArgs e)
         {
             HomeLeerling homeleerling = new HomeLeerling();
             homeleerling.Top = 0;
@@ -33,7 +36,47 @@ namespace MijnGebruiksaanwijzing.Windows
             this.Close();
         }
 
-        private void btnVolgende_Click(object sender, RoutedEventArgs e)
+        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastWel.Text = tbYellow.Text;
+            PastWelBlueList.Add(tbPastWel.Text);
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbBlue.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
+        }
+
+        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastNiet.Text = tbYellow.Text;
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbBlue.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
+        }
+
+        private void prevYellowCard_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nextYellowCard_Click(object sender, RoutedEventArgs e)
         {
 
         }

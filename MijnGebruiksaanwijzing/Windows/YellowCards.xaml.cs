@@ -19,6 +19,9 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class YellowCards : Window
     {
+        List<string> PastWelYellowList = new List<string>();
+        List<string> YellowCardsList = new List<string>();
+
         public YellowCards()
         {
             InitializeComponent();
@@ -41,5 +44,41 @@ namespace MijnGebruiksaanwijzing.Windows
             blueCards.Show();
             this.Close();
         }
+
+        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastWel.Text = tbYellow.Text;
+            PastWelYellowList.Add(tbPastWel.Text);
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbYellow.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
+        }
+
+        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        {
+            tbPastNiet.Text = tbYellow.Text;
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                tbYellow.Text = "";
+                btnPastBijMij.IsEnabled = false;
+                btnPastNietBijMij.IsEnabled = false;
+                btnVolgende.IsEnabled = true;
+            }
+        }
+
     }
 }
