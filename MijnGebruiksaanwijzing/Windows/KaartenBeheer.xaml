@@ -11,40 +11,32 @@
     </Window.Background>
     <Grid>
         <!--terug knop linksboven -->
-        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,954" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,948" Padding="8" FontSize="22" FontWeight="SemiBold"  />
         <!--grid view maken voor de rode kaartjes -->
         <ListView Margin="50,50,1152,50" x:Name="ListKaarten" ></ListView>
         <!-- gridview maken voor de gele kaartjes-->
         <TextBlock Margin="865,134,100,865" Text="Kaart Beschrijving" FontSize="32"/>
         <TextBox Margin="865,189,379,717" x:Name="TxtDescription" />
-        <TextBlock Margin="865,390,100,598" Text="Type Kaart" FontSize="32" />
-        <RadioButton Name="rdbschool" FontSize="12" Content="School" Margin="870,468,857,562" IsChecked="True">
+        <TextBlock Margin="871,392,94,578" Text="Kleur kaartje" FontSize="32"/>
+        <TextBlock Margin="871,554,94,416" Text="Stage of School" FontSize="32"/>
+        <TextBox Margin="865,633,379,329" x:Name="TxtType" />
+        <RadioButton Name="rdbred" FontSize="12" Content="Rood" Margin="874,480,951,539" IsChecked="True">
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
             </RadioButton.RenderTransform>
         </RadioButton>
-        <RadioButton Name="rdbStage" FontSize="12" Content="Stage" Margin="1145,460,577,570">
+        <RadioButton Name="rdbyellow" FontSize="12" Content="Geel" Margin="1133,478,675,538">
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
             </RadioButton.RenderTransform>
         </RadioButton>
-        <TextBlock Margin="865,554,100,416" Text="Kleur kaartje" FontSize="32"/>
-        <RadioButton Name="rdbred" FontSize="12" Content="Rood" Margin="868,642,957,388" IsChecked="True">
-            <RadioButton.RenderTransform>
-                <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-            </RadioButton.RenderTransform>
-        </RadioButton>
-        <RadioButton Name="rdbyellow" FontSize="12" Content="Geel" Margin="1149,640,573,390">
-            <RadioButton.RenderTransform>
-                <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-            </RadioButton.RenderTransform>
-        </RadioButton>
-        <RadioButton Name="rdbblue" FontSize="12" Content="Blauw" Margin="1413,640,418,390">
+        <RadioButton Name="rdbblue" FontSize="12" Content="Blauw" Margin="1419,478,412,536">
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
             </RadioButton.RenderTransform>
         </RadioButton>
         <Button x:Name="btnAdd" Content="Kaartje Toevoegen" Background="LightBlue" Foreground="Black" Margin="865,791,742,188" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <Button x:Name="btnRemove" Content="Kaartje Verwijderen" Background="LightBlue" Foreground="Black" Margin="1228,791,379,188" Padding="8" FontSize="22" FontWeight="SemiBold"  />
         <!-- gridview maken voor de blauwe kaartjes-->
     </Grid>
 </Window>
