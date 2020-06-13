@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MijnGebruiksaanwijzing.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +20,16 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class YellowCards : Window
     {
-        List<string> PastWelYellowList = new List<string>();
-        List<string> YellowCardsList = new List<string>();
+        List<string> redCards = new List<string>();
+        List<string> yellowCards = new List<string>();
+
+        List<string> selectedYellowCards = new List<string>();
 
         public YellowCards()
         {
             InitializeComponent();
+
+
             //List die je van de vorige pagina mee kunt nemen komt in het midden te staan/ die wordt geladen
             //Beneden worden de eerste 5 van de lijst van yellow cards gepakt en als kaartjes onder toegevoegd.
             //ophalen uit de database
@@ -38,17 +43,25 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
         {
-            BlueCards blueCards = new BlueCards();
-            blueCards.Top = 0;
-            blueCards.Left = 0;
-            blueCards.Show();
-            this.Close();
+            try
+            {
+                
+            }
+            catch (Exception)
+            {
+                BlueCards blueCards = new BlueCards();
+                blueCards.Top = 0;
+                blueCards.Left = 0;
+                blueCards.Show();
+                this.Close();
+            }
+            
         }
 
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbYellow.Text;
-            PastWelYellowList.Add(tbPastWel.Text);
+            selectedYellowCards.Add(tbPastWel.Text);
 
             try
             {

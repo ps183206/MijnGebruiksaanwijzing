@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MijnGebruiksaanwijzing.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,13 @@ namespace MijnGebruiksaanwijzing.Windows
     /// Interaction logic for BlueCards.xaml
     /// </summary>
     public partial class BlueCards : Window
-    { 
-        List<string> PastWelBlueList = new List<string>();
-        List<string> BlueCardsList = new List<string>();
+    {
+        List<string> blueCards = new List<string>();
+        List<string> redCards = new List<string>();
+        List<string> yellowCards = new List<string>();
 
+        List<string> selectedBlueCards = new List<string>();
+        
         public BlueCards()
         {
             InitializeComponent();
@@ -39,7 +43,7 @@ namespace MijnGebruiksaanwijzing.Windows
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbYellow.Text;
-            PastWelBlueList.Add(tbPastWel.Text);
+            selectedBlueCards.Add(tbPastWel.Text);
 
             try
             {

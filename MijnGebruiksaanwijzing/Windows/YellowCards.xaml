@@ -33,7 +33,7 @@
         </Grid>
         <Grid Grid.Row="0" Grid.Column="2" Background="White" Margin="25">
             <Border BorderThickness="3" BorderBrush="#FF5D5D" Margin="15" CornerRadius="10">
-                <TextBlock Margin="20" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbRed" Margin="20" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap"/>
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="25">
