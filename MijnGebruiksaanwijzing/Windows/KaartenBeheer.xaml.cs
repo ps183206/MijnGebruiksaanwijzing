@@ -95,15 +95,33 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             else
             {
-                CardType = TxtType.Text;
+                CardType = TxtType.Text.ToLower();
                 conn.Open();
                 MySqlCommand command = conn.CreateCommand();
 
-                command.CommandText = $"Insert into cards (CardID, CardDesc, CardColor, CardType) values ('', '{CardDesc}', '{CardColor}', '{CardType}')";
+                command.CommandText = $"Insert into cards (CardDesc, CardColor, CardType) values ('{CardDesc}', '{CardColor}', '{CardType}')";
                 MySqlDataReader reader = command.ExecuteReader();
 
                 TxtDescription.Text = "";
                 TxtType.Text = "";
+                conn.Close();
+            }
+            List<string> ListData = new List<string>();
+
+            conn.Open();
+            MySqlCommand command2 = conn.CreateCommand();
+
+            command2.CommandText = "SELECT CardDesc FROM `cards` ";
+            MySqlDataReader reader2 = command2.ExecuteReader();
+            DataTable dtData = new DataTable();
+            dtData.Load(reader2);
+            conn.Close();
+            foreach (DataRow row in dtData.Rows)
+            {
+                foreach (DataColumn col in dtData.Columns)
+                {
+                    ListData.Add(row[col].ToString());
+                }
             }
         }
 

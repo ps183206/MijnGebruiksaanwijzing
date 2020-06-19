@@ -30,11 +30,16 @@ namespace MijnGebruiksaanwijzing.Windows
 
         int cardCount = 0;
 
-        public YellowCards(string redCards)
+        public string game { get; set; }
+
+        public YellowCards(List<string> redCards, string gameType)
         {
             InitializeComponent();
 
-            tbYellow.Text = redCards;
+            game = gameType;
+
+            
+            //tbYellow.Text = redCards;
 
             MySqlConnection conn =
             new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
@@ -71,7 +76,7 @@ namespace MijnGebruiksaanwijzing.Windows
             catch (Exception)
             {
                 //wanneer alle rode kaartjes minimaal 1 geel kaartje hebben gekregen BtnDoorgaan visible maken en volgende scherm zichtbaar maken
-                BlueCards blueCards = new BlueCards();
+                BlueCards blueCards = new BlueCards(game);
                 blueCards.Top = 0;
                 blueCards.Left = 0;
                 blueCards.Show();

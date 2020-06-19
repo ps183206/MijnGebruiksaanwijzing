@@ -19,9 +19,11 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class TutorialWindow : Window
     {
+        public string Game { get; set; }
         public TutorialWindow(string gameType)
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            Game = gameType;
         }
 
         //Terug naar leerling home screen
@@ -37,9 +39,10 @@ namespace MijnGebruiksaanwijzing.Windows
 
         //verder naar de beginpagina van het spel
         //deze pagina sluiten
-        private void btnContinue_Click(object sender, RoutedEventArgs e)
+        public void btnContinue_Click(object sender, RoutedEventArgs e)
         {
-            RedCards redcards = new RedCards();
+            
+            RedCards redcards = new RedCards(Game);
             redcards.Top = 0;
             redcards.Left = 0;
             redcards.Show();

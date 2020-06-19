@@ -25,11 +25,16 @@ namespace MijnGebruiksaanwijzing.Windows
         List<string> redCards = new List<string>();
         List<string> selectedRedCards = new List<string>();
 
+        public string game { get; set; }
+        public static int Count { get; private set; }
+
         int cardCount = 0;
 
-        public RedCards()
+        public RedCards(string gameType)
         {
             InitializeComponent();
+
+            game = gameType;
 
             MySqlConnection conn =
             new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
@@ -50,11 +55,6 @@ namespace MijnGebruiksaanwijzing.Windows
                     redCards.Add(row[col].ToString());
                 }
             }
-
-            //wanneer er op de groene knop geklikt wordt moeten de kaartjes toegevoegd aan een list die wordt meegenomen dalijk
-            //nadat het kaartje toegevoegd is aan de list die meegenomen wordt dan wordt deze verwijderd uit de andere list
-            //wanneer er op de rode knop wordt gedrukt dan wordt het kaartje verwijderd van de beginlist
-            //wanneer het hele lijstje leeg is dan komt de button doorgaan te voor schijn en kan deze geklikt worden om verder te gaan
         }
 
         private void RedCards_IsLoaded(object sender, RoutedEventArgs e)
@@ -64,7 +64,8 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
         {
-            YellowCards yellowCards = new YellowCards(selectedRedCards.ToString());
+            
+            YellowCards yellowCards = new YellowCards(selectedRedCards, game);
             yellowCards.Top = 0;
             yellowCards.Left = 0;
             yellowCards.Show();
@@ -75,12 +76,13 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             tbPastWel.Text = tbRed.Text;
             selectedRedCards.Add(tbPastWel.Text);
+            int Length = RedCards.Count;
 
             try
             {
                 cardCount++;
                 tbRed.Text = redCards[cardCount];
-                lblCurrentCard.Content = cardCount + 1 + "/50";
+                lblCurrentCard.Content = cardCount + 1 + "/" + ;
             }
             catch (Exception)
             {
