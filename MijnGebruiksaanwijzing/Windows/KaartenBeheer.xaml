@@ -13,7 +13,7 @@
         <!--terug knop linksboven -->
         <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,948" Padding="8" FontSize="22" FontWeight="SemiBold"  />
         <!--grid view maken voor de rode kaartjes -->
-        <ListView Margin="50,50,1152,50" x:Name="ListKaarten" ></ListView>
+        <ListView Margin="50,50,1152,50" x:Name="ListKaarten" SelectionChanged="ListKaarten_SelectionChanged"></ListView>
         <!-- gridview maken voor de gele kaartjes-->
         <TextBlock Margin="865,134,100,865" Text="Kaart Beschrijving" FontSize="32"/>
         <TextBox Margin="865,189,379,717" x:Name="TxtDescription" />
@@ -35,8 +35,8 @@
                 <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
             </RadioButton.RenderTransform>
         </RadioButton>
-        <Button x:Name="btnAdd" Content="Kaartje Toevoegen" Background="LightBlue" Foreground="Black" Margin="865,791,742,188" Padding="8" FontSize="22" FontWeight="SemiBold"  />
-        <Button x:Name="btnRemove" Content="Kaartje Verwijderen" Background="LightBlue" Foreground="Black" Margin="1228,791,379,188" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <Button x:Name="btnAdd" Content="Kaartje Toevoegen" Background="LightBlue" Foreground="Black" Margin="865,791,742,188" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnAdd_Click"  />
+        <Button x:Name="btnRemove" Content="Kaartje Verwijderen" Background="LightBlue" Foreground="Black" Margin="1228,791,379,188" Padding="8" FontSize="22" FontWeight="SemiBold" Click="btnRemove_Click"  />
         <!-- gridview maken voor de blauwe kaartjes-->
     </Grid>
 </Window>
