@@ -57,7 +57,7 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnStartSchool_Click(object sender, RoutedEventArgs e)
         {
-            gameType = "School";
+            gameType = "school";
             popupStart.IsOpen = false;
 
             TutorialWindow tutorialwindow = new TutorialWindow(gameType);
@@ -69,7 +69,7 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnStartInternship_Click(object sender, RoutedEventArgs e)
         {
-            gameType = "Internship";
+            gameType = "stage";
             popupStart.IsOpen = false;
 
             TutorialWindow tutorialwindow = new TutorialWindow(gameType);

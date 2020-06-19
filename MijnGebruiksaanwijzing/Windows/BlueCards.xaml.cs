@@ -30,7 +30,7 @@ namespace MijnGebruiksaanwijzing.Windows
 
         int cardCount = 0;
         
-        public BlueCards()
+        public BlueCards(string gameType)
         {
             InitializeComponent();
 
