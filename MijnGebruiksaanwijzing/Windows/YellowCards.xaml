@@ -61,7 +61,7 @@
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <!--<Label Content="1/50" FontSize="40" HorizontalAlignment="Center"></Label>-->
+                <Label x:Name="lblCurrentCard" Content="1/50" FontSize="40" HorizontalAlignment="Center"></Label>
                 <Button Name="btnVolgende" Background="White" Margin="25" Height="60" Content="Volgende" FontSize="36" Click="btnVolgende_Click" IsEnabled="False"/>
             </StackPanel>
         </Grid>

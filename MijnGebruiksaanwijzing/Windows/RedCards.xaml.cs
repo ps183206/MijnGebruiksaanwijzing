@@ -1,6 +1,8 @@
 ﻿using MijnGebruiksaanwijzing.Classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +23,6 @@ namespace MijnGebruiksaanwijzing.Windows
     public partial class RedCards : Window
     {
         List<string> redCards = new List<string>();
-
         List<string> selectedRedCards = new List<string>();
 
         int cardCount = 0;
@@ -29,6 +30,27 @@ namespace MijnGebruiksaanwijzing.Windows
         public RedCards()
         {
             InitializeComponent();
+
+            MySqlConnection conn =
+            new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
+
+            conn.Open();
+            MySqlCommand command = conn.CreateCommand();
+
+            command.CommandText = "SELECT CardDesc FROM `cards` WHERE CardColor = 'Red' AND CardType = @type";
+            command.Parameters.AddWithValue("@type", gameType);
+            MySqlDataReader reader = command.ExecuteReader();
+            DataTable dtData = new DataTable();
+            dtData.Load(reader);
+            conn.Close();
+            foreach (DataRow row in dtData.Rows)
+            {
+                foreach (DataColumn col in dtData.Columns)
+                {
+                    redCards.Add(row[col].ToString());
+                }
+            }
+
             //wanneer er op de groene knop geklikt wordt moeten de kaartjes toegevoegd aan een list die wordt meegenomen dalijk
             //nadat het kaartje toegevoegd is aan de list die meegenomen wordt dan wordt deze verwijderd uit de andere list
             //wanneer er op de rode knop wordt gedrukt dan wordt het kaartje verwijderd van de beginlist
@@ -42,12 +64,11 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
         {
-            YellowCards yellowCards = new YellowCards();
+            YellowCards yellowCards = new YellowCards(selectedRedCards.ToString());
             yellowCards.Top = 0;
             yellowCards.Left = 0;
             yellowCards.Show();
             this.Close();
-
         }
 
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
@@ -59,6 +80,7 @@ namespace MijnGebruiksaanwijzing.Windows
             {
                 cardCount++;
                 tbRed.Text = redCards[cardCount];
+                lblCurrentCard.Content = cardCount + 1 + "/50";
             }
             catch (Exception)
             {
@@ -75,7 +97,9 @@ namespace MijnGebruiksaanwijzing.Windows
 
             try
             {
-                
+                cardCount++;
+                tbRed.Text = redCards[cardCount];
+                lblCurrentCard.Content = cardCount + "/50";
             }
             catch (Exception)
             {

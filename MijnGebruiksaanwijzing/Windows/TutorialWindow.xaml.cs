@@ -19,7 +19,7 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class TutorialWindow : Window
     {
-        public TutorialWindow()
+        public TutorialWindow(string gameType)
         {
             InitializeComponent(); 
         }

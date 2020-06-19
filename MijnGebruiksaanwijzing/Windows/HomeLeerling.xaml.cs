@@ -19,6 +19,8 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class HomeLeerling : Window
     {
+        string gameType = "";
+
         public HomeLeerling()
         {
             InitializeComponent();
@@ -55,9 +57,10 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnStartSchool_Click(object sender, RoutedEventArgs e)
         {
+            gameType = "School";
             popupStart.IsOpen = false;
 
-            TutorialWindow tutorialwindow = new TutorialWindow();
+            TutorialWindow tutorialwindow = new TutorialWindow(gameType);
             tutorialwindow.Top = 0;
             tutorialwindow.Left = 0;
             tutorialwindow.Show();
@@ -66,9 +69,10 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnStartInternship_Click(object sender, RoutedEventArgs e)
         {
+            gameType = "Internship";
             popupStart.IsOpen = false;
 
-            TutorialWindow tutorialwindow = new TutorialWindow();
+            TutorialWindow tutorialwindow = new TutorialWindow(gameType);
             tutorialwindow.Top = 0;
             tutorialwindow.Left = 0;
             tutorialwindow.Show();

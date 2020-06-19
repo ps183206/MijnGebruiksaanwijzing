@@ -1,6 +1,8 @@
 ﻿using MijnGebruiksaanwijzing.Classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,34 +22,68 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class BlueCards : Window
     {
-        List<string> blueCards = new List<string>();
         List<string> redCards = new List<string>();
         List<string> yellowCards = new List<string>();
 
+        List<string> blueCards = new List<string>();
         List<string> selectedBlueCards = new List<string>();
+
+        int cardCount = 0;
         
         public BlueCards()
         {
             InitializeComponent();
+
+            MySqlConnection conn =
+            new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
+
+            conn.Open();
+            MySqlCommand command = conn.CreateCommand();
+
+            command.CommandText = "SELECT CardDesc FROM `cards` WHERE CardColor = 'Blue' AND CardType = @type";
+            command.Parameters.AddWithValue("@type", gameType);
+            MySqlDataReader reader = command.ExecuteReader();
+            DataTable dtData = new DataTable();
+            dtData.Load(reader);
+            conn.Close();
+            foreach (DataRow row in dtData.Rows)
+            {
+                foreach (DataColumn col in dtData.Columns)
+                {
+                    blueCards.Add(row[col].ToString());
+                }
+            }
         }
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
         {
-            HomeLeerling homeleerling = new HomeLeerling();
-            homeleerling.Top = 0;
-            homeleerling.Left = 0;
-            homeleerling.Show();
-            this.Close();
+            try
+            {
+                //Volgende rode kaart weergeven uit redCards
+
+
+            }
+            catch (Exception)
+            {
+                HomeLeerling homeleerling = new HomeLeerling();
+                homeleerling.Top = 0;
+                homeleerling.Left = 0;
+                homeleerling.Show();
+                this.Close();
+            }
+            
         }
 
         private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
         {
-            tbPastWel.Text = tbYellow.Text;
+            tbPastWel.Text = tbBlue.Text;
             selectedBlueCards.Add(tbPastWel.Text);
 
             try
             {
-
+                cardCount++;
+                tbBlue.Text = blueCards[cardCount];
+                lblCurrentCard.Content = cardCount + 1 + "/50";
             }
             catch (Exception)
             {
@@ -60,11 +96,13 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
         {
-            tbPastNiet.Text = tbYellow.Text;
+            tbPastNiet.Text = tbBlue.Text;
 
             try
             {
-
+                cardCount++;
+                tbBlue.Text = blueCards[cardCount];
+                lblCurrentCard.Content = cardCount + 1 + "/50";
             }
             catch (Exception)
             {
