@@ -1,5 +1,6 @@
 ﻿using MijnGebruiksaanwijzing.Windows;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,184 +33,104 @@ namespace MijnGebruiksaanwijzing
         //gebruikersnaam mee geven naar Leerlinghome
         //window sluiten
 
-        private MySqlConnection conn;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+        MySqlConnection conn =
+        new MySqlConnection("Server=localhost;Database=mijngebruiksaanwijzing;Uid=root;Pwd=");
+
         public LoginScreen()
         {
-            server = "localhost";
-            database = "mijngebruiksaanwijzing";
-            uid = "root";
-            password = "";
-
-            string connString;
-            connString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};";
-
-            conn = new MySqlConnection(connString);
-
             InitializeComponent();
         }
 
-        private void tbUsername_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (tbUsername.Text == "Gebruikersnaam")
-            {
-                tbUsername.Text = "";
-                tbUsername.Foreground = Brushes.Black;
-            }
-        }
+        //private void tbUsername_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (tbUsername.Text == "Gebruikersnaam")
+        //    {
+        //        tbUsername.Text = "";
+        //        tbUsername.Foreground = Brushes.Black;
+        //    }
+        //}
 
-        private void tbPassword_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (tbPassword.Text == "Wachtwoord")
-            {
-                tbPassword.Text = "";
-                tbPassword.Foreground = Brushes.Black;
-            }
-        }
+        //private void tbPassword_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (tbPassword.Text == "Wachtwoord")
+        //    {
+        //        tbPassword.Text = "";
+        //        tbPassword.Foreground = Brushes.Black;
+        //    }
+        //}
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = tbUsername.Text;
-            string pass = tbPassword.Text;
-            if (CanLogin(user, pass))
+            if (tbUsername.Text != "" && tbPassword.Text != "")
             {
-                //conn.Open();
-                //string rolequery = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
-
-                //MySqlCommand cmd = new MySqlCommand(rolequery, conn);
-
-                //if (rolequery == "0")
-                //{
-                //HomeBegeleider winB = new HomeBegeleider();
-                //winB.Top = 0;
-                //winB.Left = 0;
-                //winB.Show();
-                //this.Close();
-                //}
-                //else if (rolequery == "1")
-                //{
-                //HomeLeerling winL = new HomeLeerling();
-                //winL.Top = 0;
-                //winL.Left = 0;
-                //winL.Show();
-                //this.Close();
-                //}
-                //else
-                //{
-                //    MessageBox.Show(rolequery);
-                //}
-                try
-                {
-                    conn.Open();
-                    string ID = "0";
-                    // query to check whether value exists
-                    string sql = $"SELECT Role FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
-
-                    // create the command object
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        ID = reader.GetString(0);
-                    }
-                    Console.WriteLine(ID);
-                    if (ID == "0")
-                    {
-                        //window shit in
-                        HomeBegeleider homebegeleider = new HomeBegeleider();
-                        homebegeleider.Top = 0;
-                        homebegeleider.Left = 0;
-                        homebegeleider.Show();
-                        this.Close();
-                    }
-                    else if (ID == "1"){
-                        //window shit in
-                        HomeLeerling homeleerling = new HomeLeerling();
-                        homeleerling.Top = 0;
-                        homeleerling.Left = 0;
-                        homeleerling.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        Console.WriteLine("If u see this u fucked up");
-                    }
-                }
-                finally
-                {
-                    // always close connection when done
-                    conn.Close();
-                }
-
+                CheckLogin();
             }
             else
             {
-                MessageBox.Show($"{user} bestaat niet of is incorrect!");
+                MessageBox.Show("Voer een gebruikersnaam en wachtwoord in!");
             }
         }
 
-        public bool CanLogin(string user, string pass)
+        private void CheckLogin()
         {
-            string query = $"SELECT * FROM users WHERE UserName = '{user}' AND Password ='{pass}';";
+            //string username = tbUsername.Text;
+            //string password = tbPassword.Text;
 
-            try
+            ////hier wordt de query uitgevoerd om de gebruikersnaam en het wachtwoord op te halen uit de database
+            //conn.Open();
+
+            //MySqlCommand command = conn.CreateCommand();
+            //command.CommandText = "$SELECT username, password FROM users WHERE Username = '{username}'";
+            //command.Parameters.AddWithValue("@name", tbUsername.Text);
+            //command.Parameters.AddWithValue("@pass", tbPassword.Text);
+            //MySqlDataReader reader = command.ExecuteReader();
+
+            //DataTable dtData = new DataTable();
+            //dtData.Load(reader);
+
+            //foreach (DataRow row in dtData.Rows)
+            //{
+            //    KaartenBeheer kaartenbeheer = new KaartenBeheer();
+            //    kaartenbeheer.Top = 0;
+            //    kaartenbeheer.Left = 0;
+            //    this.Close();
+            //    kaartenbeheer.Show();
+
+            //    //else
+            //    //{
+            //    //    MessageBox.Show("Gebruikersnaam of wachtwoord is onjuist!");
+            //    //}
+            //}
+
+            //conn.Close();
+
+            string username = tbUsername.Text;
+
+            using (MySqlCommand cmd = new MySqlCommand($"SELECT Username, Password FROM users WHERE Username = '{username}'"))
             {
-                if (OpenConnection())
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = conn;
+                conn.Open();
+                using (MySqlDataReader sdr = cmd.ExecuteReader())
                 {
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
+                    sdr.Read();
+                    string user = sdr["Username"].ToString();
+                    string pass = sdr["Password"].ToString();
 
-                    if (reader.Read())
+                    if (tbUsername.Text == user || tbPassword.Text == pass)
                     {
-                        reader.Close();
-                        conn.Close();
-                        return true;
+                        KaartenBeheer kaartenbeheer = new KaartenBeheer();
+                        kaartenbeheer.Top = 0;
+                        kaartenbeheer.Left = 0;
+                        this.Close();
+                        kaartenbeheer.Show();
                     }
                     else
                     {
-                        reader.Close();
-                        conn.Close();
-                        return false;
+                        MessageBox.Show("De gebruikersnaam of wachtwoord is incorrect!");
                     }
                 }
-                else
-                {
-                    conn.Close();
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
                 conn.Close();
-                return false;
-            }
-        }
-
-        private bool OpenConnection()
-        {
-            try
-            {
-                conn.Open();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Connectie met de server mislukt!");
-                        break;
-                    case 1045:
-                        MessageBox.Show("Server gebruikersnaam of wachtwoord is incorrect!");
-                        break;
-                }
-                return false;
             }
         }
     }

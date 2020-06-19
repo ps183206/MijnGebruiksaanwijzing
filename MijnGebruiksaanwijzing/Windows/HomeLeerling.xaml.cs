@@ -79,12 +79,21 @@ namespace MijnGebruiksaanwijzing.Windows
             this.Close();
         }
 
-        private void btnCheckResults_Click(object sender, RoutedEventArgs e)
+        //private void btnCheckResults_Click(object sender, RoutedEventArgs e)
+        //{
+        //    EindResultaat eindresultaat = new EindResultaat();
+        //    eindresultaat.Top = 0;
+        //    eindresultaat.Left = 0;
+        //    eindresultaat.Show();
+        //    this.Close();
+        //}
+
+        private void btnBeheeromgeving_Click(object sender, RoutedEventArgs e)
         {
-            EindResultaat eindresultaat = new EindResultaat();
-            eindresultaat.Top = 0;
-            eindresultaat.Left = 0;
-            eindresultaat.Show();
+            LoginScreen loginscreen = new LoginScreen();
+            loginscreen.Top = 0;
+            loginscreen.Left = 0;
+            loginscreen.Show();
             this.Close();
         }
     }

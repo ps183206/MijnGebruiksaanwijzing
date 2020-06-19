@@ -12,6 +12,8 @@
     </Window.Background>
 
     <Grid>
+        <Button x:Name="btnBeheeromgeving" Content="Beheeromgeving" Width="190" Height="50" Background="#25126E" Foreground="White" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Click="btnBeheeromgeving_Click"></Button>
+
         <TextBlock Text="Welkom!" Margin="500,215,500,719" FontSize="75" TextAlignment="center"></TextBlock>
         
         <!--button rechtsboven in de hoek om uit te loggen -->
@@ -31,7 +33,7 @@
                 <Label Content=" X " Foreground="#777777" FontSize="60" FontWeight="Light" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" MouseUp="Label_MouseUp"></Label>
               </DockPanel>
               <DockPanel>
-                    <Button x:Name="btnStartSchool" DockPanel.Dock="Left" Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold" Click="btnStartSchool_Click"></Button>
+                  <Button x:Name="btnStartSchool" DockPanel.Dock="Left" Background="#D60096" Content="School" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold" Click="btnStartSchool_Click"></Button>
                   <Button x:Name="btnStartInternship" DockPanel.Dock="Right" Background="#D60096" Content="Stage" Margin="20" Width="250" Height="150" Foreground="White" FontSize="45" FontWeight="SemiBold" Click="btnStartInternship_Click"></Button>
                 </DockPanel>
             </StackPanel>
