@@ -26,6 +26,7 @@ namespace MijnGebruiksaanwijzing.Windows
         List<string> selectedRedCards = new List<string>();
 
         public string game { get; set; }
+        public static int Count { get; private set; }
 
         int cardCount = 0;
 
@@ -75,12 +76,13 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             tbPastWel.Text = tbRed.Text;
             selectedRedCards.Add(tbPastWel.Text);
+            int Length = RedCards.Count;
 
             try
             {
                 cardCount++;
                 tbRed.Text = redCards[cardCount];
-                lblCurrentCard.Content = cardCount + 1 + "/50";
+                lblCurrentCard.Content = cardCount + 1 + "/" + ;
             }
             catch (Exception)
             {
