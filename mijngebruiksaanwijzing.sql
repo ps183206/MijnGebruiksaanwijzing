@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 18 jun 2020 om 21:12
+-- Gegenereerd op: 19 jun 2020 om 09:37
 -- Serverversie: 10.4.10-MariaDB
 -- PHP-versie: 7.3.12
 
@@ -312,6 +312,27 @@ CREATE TABLE IF NOT EXISTS `resultsyellow` (
   `YellowCard` int(11) NOT NULL,
   `RedCard` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `users`
+--
+
+INSERT INTO `users` (`UserID`, `Username`, `Password`) VALUES
+(1, 'admin', 'summa2020');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

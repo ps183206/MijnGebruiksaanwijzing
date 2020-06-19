@@ -29,11 +29,12 @@ namespace MijnGebruiksaanwijzing.Windows
         public static int Count { get; private set; }
 
         int cardCount = 0;
+        int Length { get; set; }
 
         public RedCards(string gameType)
         {
             InitializeComponent();
-
+            
             game = gameType;
 
             MySqlConnection conn =
@@ -55,6 +56,8 @@ namespace MijnGebruiksaanwijzing.Windows
                     redCards.Add(row[col].ToString());
                 }
             }
+            Length = redCards.Count;
+            lblCurrentCard.Content = cardCount + 1 +"/" + Length;
         }
 
         private void RedCards_IsLoaded(object sender, RoutedEventArgs e)
@@ -76,13 +79,13 @@ namespace MijnGebruiksaanwijzing.Windows
         {
             tbPastWel.Text = tbRed.Text;
             selectedRedCards.Add(tbPastWel.Text);
-            int Length = RedCards.Count;
+            Length = redCards.Count;
 
             try
             {
                 cardCount++;
                 tbRed.Text = redCards[cardCount];
-                lblCurrentCard.Content = cardCount + 1 + "/" + ;
+                lblCurrentCard.Content = cardCount + 1 + "/" + Length;
             }
             catch (Exception)
             {
@@ -96,12 +99,13 @@ namespace MijnGebruiksaanwijzing.Windows
         private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
         {
             tbPastNiet.Text = tbRed.Text;
+            Length = redCards.Count;
 
             try
             {
                 cardCount++;
                 tbRed.Text = redCards[cardCount];
-                lblCurrentCard.Content = cardCount + "/50";
+                lblCurrentCard.Content = cardCount + 1 + "/" + Length;
             }
             catch (Exception)
             {

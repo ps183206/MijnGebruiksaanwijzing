@@ -105,6 +105,7 @@ namespace MijnGebruiksaanwijzing
             //conn.Close();
 
             string username = tbUsername.Text;
+            string password = tbPassword.Text;
 
             using (MySqlCommand cmd = new MySqlCommand($"SELECT Username, Password FROM users WHERE Username = '{username}'"))
             {
@@ -117,7 +118,7 @@ namespace MijnGebruiksaanwijzing
                     string user = sdr["Username"].ToString();
                     string pass = sdr["Password"].ToString();
 
-                    if (tbUsername.Text == user || tbPassword.Text == pass)
+                    if (username == user || password == pass)
                     {
                         KaartenBeheer kaartenbeheer = new KaartenBeheer();
                         kaartenbeheer.Top = 0;
