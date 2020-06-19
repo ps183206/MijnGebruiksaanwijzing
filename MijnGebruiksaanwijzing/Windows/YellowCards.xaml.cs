@@ -29,7 +29,7 @@ namespace MijnGebruiksaanwijzing.Windows
         List<string> selectedYellowCards = new List<string>();
 
         int cardCount = 0;
-
+        int Length { get; set; }
         public string game { get; set; }
 
         public YellowCards(List<string> redCards, string gameType)
@@ -61,6 +61,8 @@ namespace MijnGebruiksaanwijzing.Windows
                     yellowCards.Add(row[col].ToString());
                 }
             }
+            Length = yellowCards.Count;
+            lblCurrentCard.Content = cardCount + 1 + "/" + Length;
         }
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
@@ -93,11 +95,11 @@ namespace MijnGebruiksaanwijzing.Windows
             {
                 cardCount++;
                 tbYellow.Text = yellowCards[cardCount];
-                lblCurrentCard.Content = cardCount + 1 + "/50";
+                lblCurrentCard.Content = cardCount + 1 + "/" + Length;
             }
             catch (Exception)
             {
-                tbYellow.Text = "";
+                gridYellow.Visibility = Visibility.Hidden;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
                 btnVolgende.IsEnabled = true;
@@ -112,11 +114,11 @@ namespace MijnGebruiksaanwijzing.Windows
             {
                 cardCount++;
                 tbYellow.Text = yellowCards[cardCount];
-                lblCurrentCard.Content = cardCount + 1 + "/50";
+                lblCurrentCard.Content = cardCount + 1 + "/" + Length;
             }
             catch (Exception)
             {
-                tbYellow.Text = "";
+                gridYellow.Visibility = Visibility.Hidden;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
                 btnVolgende.IsEnabled = true;
