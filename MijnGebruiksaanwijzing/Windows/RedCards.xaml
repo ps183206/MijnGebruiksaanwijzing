@@ -30,6 +30,7 @@
             <TextBlock VerticalAlignment="Bottom" FontSize="36" HorizontalAlignment="Center" FontWeight="Bold">Past <Underline>wel</Underline> bij mij</TextBlock>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="5">
+            <Image Source="/Images/logo_summa_college.png" Width="200" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Opacity="0.5"/>
             <TextBlock VerticalAlignment="Bottom" FontSize="36" HorizontalAlignment="Center" FontWeight="Bold">Past <Underline>niet</Underline> bij mij</TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="25">
