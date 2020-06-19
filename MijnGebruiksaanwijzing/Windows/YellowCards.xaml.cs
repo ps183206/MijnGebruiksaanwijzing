@@ -38,7 +38,6 @@ namespace MijnGebruiksaanwijzing.Windows
 
             game = gameType;
 
-            
             //tbYellow.Text = redCards;
 
             MySqlConnection conn =
