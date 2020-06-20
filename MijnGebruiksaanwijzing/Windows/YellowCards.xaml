@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MijnGebruiksaanwijzing.Windows"
         mc:Ignorable="d"
-        Title="YellowCards" Height="1080" Width="1920" WindowState="Maximized">
+        Title="YellowCards" Height="1080" Width="1920" WindowState="Maximized"
+        Loaded="YellowCards_IsLoaded">
     <Window.Background>
         <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
     </Window.Background>
