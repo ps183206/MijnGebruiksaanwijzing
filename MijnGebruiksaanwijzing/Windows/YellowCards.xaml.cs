@@ -95,7 +95,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 foreach (string element in selectedYellowCards)
                 {
                     c++;
-                    FullYellowCardString = element.ToString() + "/" + FullYellowCardString;
+                    FullYellowCardString = element.ToString() + "_" + FullYellowCardString;
                 }
                 FinalYellowCards.Add(FullYellowCardString);
                 FullYellowCardString = "";
@@ -113,7 +113,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 foreach (string element in selectedYellowCards)
                 {
                     c++;
-                    FullYellowCardString = element.ToString() + "/" + FullYellowCardString;
+                    FullYellowCardString = element.ToString() + "_" + FullYellowCardString;
                 }
                 FinalYellowCards.Add(FullYellowCardString);
                 FullYellowCardString = "";
