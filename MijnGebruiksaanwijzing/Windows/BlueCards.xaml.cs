@@ -22,15 +22,15 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class BlueCards : Window
     {
-        List<string> redCards = new List<string>();
-        List<string> yellowCards = new List<string>();
+        List<string> NewRedCards = new List<string>();
+        List<string> NewYellowCards = new List<string>();
 
         List<string> blueCards = new List<string>();
         List<string> selectedBlueCards = new List<string>();
 
         int cardCount = 0;
         
-        public BlueCards(string gameType)
+        public BlueCards(string gameType, List<string> redCards, List<string> yellowCards)
         {
             InitializeComponent();
 
