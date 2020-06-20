@@ -89,7 +89,8 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbRed.Text = "";
+                gridRed.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
                 btnVolgende.IsEnabled = true;
@@ -109,7 +110,8 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbRed.Text = "";
+                gridRed.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
                 btnVolgende.IsEnabled = true;
