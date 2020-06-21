@@ -30,21 +30,54 @@ namespace MijnGebruiksaanwijzing.Windows
 		List<string> redList = new List<string>();
 		List<string> yellowList = new List<string>();
 		List<string> blueList = new List<string>();
-		
+
+		List<string> FinalyellowList = new List<string>();
+		List<string> FinalBlueList = new List<string>();
+
+		string FullYellowString { get; set; }
+
+		char delimiterChars = '_';
+
 		public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
         {
             InitializeComponent();
 
+			redList = redCards;
+			yellowList = yellowCards;
+			//ieder item in yellowlist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+			foreach (string item in yellowList)
+			{
+				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
+				foreach (string element in item.Split(delimiterChars))
+				{
+					//zet items in deze list als:		[0]dit is een test
+					//									[1]dit is nog een test
+					FinalyellowList.Add(element);
+				}
+			}
+			blueList = blueCards;
+			//ieder item in bluelist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+			foreach (string item in blueList)
+			{
+				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
+				foreach (string element in item.Split(delimiterChars))
+				{
+					//zet items in deze list als:		[0]dit is een test
+					//									[1]dit is nog een test
+					FinalBlueList.Add(element);
+				}
+			}
+
 			// GridView/ListView laten vullen met de resultaten van het gespeelde spel
-			redList.Add("Rood kaartje 1"); 
-			redList.Add("Rood kaartje 2"); 
-			redList.Add("Rood kaartje 3");
-			yellowList.Add("Geel kaartje 1, Geel kaartje 2");
-			yellowList.Add("Geel kaartje 3");
-			yellowList.Add("Geel kaartje 4, Geel kaartje 5, Geel kaartje 6");
-			blueList.Add("Blauw kaartje 1");
-			blueList.Add("Blauw kaartje 2");
-			blueList.Add("Blauw kaartje 3, Blauw kaartje 4");
+			//redList.Add("Rood kaartje 1"); 
+			//redList.Add("Rood kaartje 2"); 
+			//redList.Add("Rood kaartje 3"); 
+			//yellowList.Add("Geel kaartje 1, Geel kaartje 2"); 
+			//yellowList.Add("Geel kaartje 3"); 
+			//yellowList.Add("Geel kaartje 4, Geel kaartje 5, Geel kaartje 6"); 
+			//blueList.Add("Blauw kaartje 1"); 
+			//blueList.Add("Blauw kaartje 2"); 
+			//blueList.Add("Blauw kaartje 3, Blauw kaartje 4"); 
 
 			var lvRedData = new ListView();
 			foreach (var item in redList)
@@ -53,13 +86,13 @@ namespace MijnGebruiksaanwijzing.Windows
 			}
 
 			var lvYellowData = new ListView();
-			foreach (var item in yellowList)
+			foreach (var item in FinalyellowList)
 			{
 				lvYellow.Items.Add(item);
 			}
 
 			var lvBlueData = new ListView();
-			foreach (var item in blueList)
+			foreach (var item in FinalBlueList)
 			{
 				lvBlue.Items.Add(item);
 			}
@@ -110,55 +143,5 @@ namespace MijnGebruiksaanwijzing.Windows
 				MessageBox.Show("Downloaden mislukt.");
 			}
 		}
-
-		//public void SaveCurrentViewToXPS()
-		//{
-		//    // Configure save file dialog box
-		//    Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-		//    dlg.FileName = String.Format("MyFile{0:ddMMyyyyHHmmss}", DateTime.Now); // Default file name
-		//    dlg.DefaultExt = ".xps"; // Default file extension
-		//    dlg.Filter = "XPS Documents (.xps)|*.xps"; // Filter files by extension
-
-		//    // Show save file dialog box
-		//    Nullable<bool> result = dlg.ShowDialog();
-
-		//    // Process save file dialog box results
-		//    if (result == true)
-		//    {
-		//        // Save document
-		//        string filename = dlg.FileName;
-
-		//        // Initialize the xps document structure
-		//        FixedDocument fixedDoc = new FixedDocument();
-		//        PageContent pageContent = new PageContent();
-		//        FixedPage fixedPage = new FixedPage();
-
-		//        // Create the document and set the datacontext
-		//        EindResultaat view = new EindResultaat();
-		//        view.DataContext = theControlDataContext;
-		//        view.UpdateLayout();
-
-		//        // Get the page size of an A4 document
-		//        var pageSize = new Size(8.5 * 96.0, 11.0 * 96.0);
-
-		//        // We just fit it horizontally, so only the width is set here
-		//        //view.Height = pageSize.Height;
-		//        view.Width = pageSize.Width;
-		//        view.UpdateLayout();
-
-		//        //Create first page of document
-		//        fixedPage.Children.Add(view);
-		//        ((System.Windows.Markup.IAddChild)pageContent).AddChild(fixedPage);
-		//        fixedDoc.Pages.Add(pageContent);
-
-		//        // Create the xps file and write it
-		//        XpsDocument xpsd = new XpsDocument(filename, FileAccess.ReadWrite);
-		//        XpsDocumentWriter xw = XpsDocument.CreateXpsDocumentWriter(xpsd);
-		//        xw.Write(fixedDoc);
-		//        xpsd.Close();
-		//    }
-		//}
-
-
 	}
 }
