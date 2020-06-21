@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using iTextSharp;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
 using System;
@@ -19,6 +20,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace MijnGebruiksaanwijzing.Windows
 {
@@ -35,8 +37,12 @@ namespace MijnGebruiksaanwijzing.Windows
 		List<string> FinalBlueList = new List<string>();
 
 		string FullYellowString { get; set; }
+		public string Categorie { get; }
 
 		char delimiterChars = '_';
+
+		private string documentName;
+		private string categorie;
 
 		public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
         {
@@ -44,58 +50,9 @@ namespace MijnGebruiksaanwijzing.Windows
 
 			redList = redCards;
 			yellowList = yellowCards;
-			//ieder item in yellowlist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
-			foreach (string item in yellowList)
-			{
-				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
-				foreach (string element in item.Split(delimiterChars))
-				{
-					//zet items in deze list als:		[0]dit is een test
-					//									[1]dit is nog een test
-					FinalyellowList.Add(element);
-				}
-			}
 			blueList = blueCards;
-			//ieder item in bluelist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
-			foreach (string item in blueList)
-			{
-				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
-				foreach (string element in item.Split(delimiterChars))
-				{
-					//zet items in deze list als:		[0]dit is een test
-					//									[1]dit is nog een test
-					FinalBlueList.Add(element);
-				}
-			}
 
-			// GridView/ListView laten vullen met de resultaten van het gespeelde spel
-			//redList.Add("Rood kaartje 1"); 
-			//redList.Add("Rood kaartje 2"); 
-			//redList.Add("Rood kaartje 3"); 
-			//yellowList.Add("Geel kaartje 1, Geel kaartje 2"); 
-			//yellowList.Add("Geel kaartje 3"); 
-			//yellowList.Add("Geel kaartje 4, Geel kaartje 5, Geel kaartje 6"); 
-			//blueList.Add("Blauw kaartje 1"); 
-			//blueList.Add("Blauw kaartje 2"); 
-			//blueList.Add("Blauw kaartje 3, Blauw kaartje 4"); 
 
-			var lvRedData = new ListView();
-			foreach (var item in redList)
-			{
-				lvRed.Items.Add(item);
-			}
-
-			var lvYellowData = new ListView();
-			foreach (var item in FinalyellowList)
-			{
-				lvYellow.Items.Add(item);
-			}
-
-			var lvBlueData = new ListView();
-			foreach (var item in FinalBlueList)
-			{
-				lvBlue.Items.Add(item);
-			}
 		}
 
         private void btnSaveResult_Click(object sender, RoutedEventArgs e)
@@ -105,43 +62,149 @@ namespace MijnGebruiksaanwijzing.Windows
 
 		private void ExportToPdf()
 		{
-			try
-			{
-				var pdfDoc = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
-				string path = $"C:\\Users\\{Environment.UserName}\\Downloads\\{Assembly.GetEntryAssembly().GetName().Name}.pdf";
-				PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
-				pdfDoc.Open();
+			documentName = TxtStudentName.Text + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
 
-				var headerTable = new PdfPTable(new[] { 1.25f, 1.25f, 1.25f })
+			//File to write to
+			var testFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), documentName + ".pdf");
+
+			var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None);
+
+			Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+
+			PdfWriter writer = PdfWriter.GetInstance(document, fs);
+
+			document.AddAuthor("Summa College");
+			document.AddCreator("Summa College Kaarten Spel");
+			document.AddKeywords("Kaarten Spel");
+			document.AddSubject("Resultaten Kaarten Spel");
+			document.AddTitle($"Resultaten van {TxtStudentName.Text}");
+
+			document.SetPageSize(PageSize.A4.Rotate());
+
+			BaseColor redColor = new BaseColor(255, 195, 195);
+			BaseColor yellowColor = new BaseColor(255, 255, 195);
+			BaseColor blueColor = new BaseColor(195, 210, 255);
+			BaseColor dirtyfuckingcolor = new BaseColor(214, 0, 149);
+
+			document.Open();
+
+
+			PdfPTable table = new PdfPTable(3);
+
+			PdfPCell cell = new PdfPCell(new Phrase(" \n Resultaten \n"));
+			cell.BackgroundColor = dirtyfuckingcolor;
+
+			cell.Colspan = 3;
+			cell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+			table.AddCell(cell);
+
+			PdfPCell cell1 = new PdfPCell(new Phrase("\n Belemeringen \n"));
+			cell1.BackgroundColor = dirtyfuckingcolor;
+
+			PdfPCell cell2 = new PdfPCell(new Phrase("\n Oplossingen \n"));
+			cell2.BackgroundColor = dirtyfuckingcolor;
+
+			PdfPCell cell3 = new PdfPCell(new Phrase("\n Wie kan mij helpen \n"));
+			cell3.BackgroundColor = dirtyfuckingcolor;
+
+			table.AddCell(cell1);
+			table.AddCell(cell2);
+			table.AddCell(cell3);
+
+			int index = 0;
+			foreach (string redCard in redList)
+			{
+				PdfPCell redCell = new PdfPCell();
+				redCell.BackgroundColor = redColor;
+				redCell.AddElement(new Phrase(redCard));
+
+				//addcell redCard
+				table.AddCell(redCell);
+
+				List<string> yList = new List<string>();
+				List<string> bList = new List<string>();
+
+				yList.Add(yellowList[index]);
+				bList.Add(blueList[index]);
+				//int yellow = 0;
+				//int blue = 0;
+				//ieder item in yellowlist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+				foreach (string item in yList)
 				{
-					WidthPercentage = 75,
-					DefaultCell = { MinimumHeight = 22f }
-				};
+					PdfPCell yellowCell = new PdfPCell();
+					yellowCell.BackgroundColor = yellowColor;
+					//if(index == yellow)
+					//{
+					//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
+					foreach (string element in item.Split(delimiterChars))
+					{
+						//zet items in deze list als:        [0]dit is een test
+						//                                   [1]dit is nog een test
+						FinalyellowList.Add(element);
+					}
+					FinalyellowList.Remove("");
+					string result = "";
+					foreach (string yellowCard in FinalyellowList)
+					{
+						result += "- " + yellowCard + "\n";
+					}
+					//add to cell's
+					yellowCell.AddElement(new Phrase(result));
+					table.AddCell(yellowCell);
 
-				headerTable.AddCell("Belemmering");
-				headerTable.AddCell("Oplossing");
-				headerTable.AddCell("Wie kan mij daarbij helpen?");
-				headerTable.AddCell(redList[0]);
-				headerTable.AddCell(yellowList[0]);
-				headerTable.AddCell(blueList[0]);
-				headerTable.AddCell(redList[1]);
-				headerTable.AddCell(yellowList[1]);
-				headerTable.AddCell(blueList[1]);
-				headerTable.AddCell(redList[2]);
-				headerTable.AddCell(yellowList[2]);
-				headerTable.AddCell(blueList[2]);
+					//string result = Regex.Replace(input, @"\r\n?|\n", replacementString);
 
+					FinalyellowList.Clear();
 
-				pdfDoc.Add(headerTable);
+					//}
+				}
+				//ieder item in bluelist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+				foreach (string item in bList)
+				{
+					PdfPCell blueCell = new PdfPCell();
+					blueCell.BackgroundColor = blueColor;
+					//if (index == blue)
+					//{
+					//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test_
+					foreach (string element in item.Split(delimiterChars))
+					{
+						//zet items in deze list als:        [0]dit is een test
+						//                                   [1]dit is nog een test
 
-				pdfDoc.Close();
+						FinalBlueList.Add(element);
+					}
 
-				MessageBox.Show("Resultaten gedownload als Pdf!");
+					FinalBlueList.Remove("");
+					string result = "";
+					foreach (string blueCard in FinalBlueList)
+					{
+						result += "- " + blueCard + "\n";
+					}
+					//add to cell's
+					blueCell.AddElement(new Phrase(result));
+					table.AddCell(blueCell);
+
+					FinalBlueList.Clear();
+				//}
+				}
+				index++;
+				//yellow++;
+				//blue++;
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Downloaden mislukt.");
-			}
+
+			document.Add(table);
+
+
+			document.Close();
+
+			writer.Close();
+
+			fs.Close();
+
+			MessageBox.Show("U kunt uw resultaten bekijken in het PDF op je bureaublad");
+
+			System.Windows.Application.Current.Shutdown();
 		}
 	}
 }
