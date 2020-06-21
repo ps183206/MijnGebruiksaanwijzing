@@ -148,6 +148,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 btnPastBijMij.IsEnabled = true;
                 btnPastNietBijMij.IsEnabled = true;
                 btnVolgende.IsEnabled = false;
+                selectedYellowCards.Clear();
 
             }
 

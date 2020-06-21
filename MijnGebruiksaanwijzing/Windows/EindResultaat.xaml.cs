@@ -26,7 +26,7 @@ namespace MijnGebruiksaanwijzing.Windows
         private string uid;
         private string password;
 
-        public EindResultaat()
+        public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
         {
             server = "localhost";
             database = "mijngebruiksaanwijzing";

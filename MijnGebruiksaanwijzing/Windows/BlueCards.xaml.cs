@@ -31,6 +31,7 @@ namespace MijnGebruiksaanwijzing.Windows
         List<string> SingleYellowCards = new List<string>();
         List<string> FinalBlueCards = new List<string>();
 
+        List<string> ArrayList = new List<string>();
 
         char delimiterChars = '_';
 
@@ -61,6 +62,8 @@ namespace MijnGebruiksaanwijzing.Windows
 
         int NewYellowArray { get; set; }
 
+        int GetSelectedYellow { get; set; }
+
         public BlueCards(string gameType, List<string> redCards, List<string> yellowCards)
         {
             InitializeComponent();
@@ -68,6 +71,7 @@ namespace MijnGebruiksaanwijzing.Windows
             game = gameType;
             NewRedCards = redCards;
             NewYellowCards = yellowCards;
+            RedCardsLength = NewRedCards.Count();
 
             conn.Open();
             MySqlCommand command = conn.CreateCommand();
@@ -98,7 +102,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 SingleYellowCards.Add(element);
             }
 
-            tbYellow.Text = SingleYellowCards[0];
+            tbYellow.Text = SingleYellowCards[0].ToString();
 
             tbRed.Text = NewRedCards[0].ToString();
 
@@ -107,6 +111,9 @@ namespace MijnGebruiksaanwijzing.Windows
             YellowCardLength = SingleYellowCards.Count() - 1;
             Length = blueCards.Count;
             lblCurrentCard.Content = cardCount + 1 + "/" + Length;
+
+
+            GetSelectedYellow = 0;
         }
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
@@ -121,15 +128,19 @@ namespace MijnGebruiksaanwijzing.Windows
                 }
                 FinalBlueCards.Add(FullBlueCardString);
                 FullBlueCardString = "";
-                
-
 
                 //Door naar volgende pagina
+                EindResultaat eindResultaat = new EindResultaat(NewRedCards, NewYellowCards, FinalBlueCards);
+                eindResultaat.Top = 0;
+                eindResultaat.Left = 0;
+                eindResultaat.Show();
+                this.Close();
             }
             else
             {
 
                 redCardCount++;
+                YellowCardCount++;
                 foreach (string element in selectedBlueCards)
                 {
                     FullBlueCardString = element.ToString() + "_" + FullBlueCardString;
@@ -138,25 +149,34 @@ namespace MijnGebruiksaanwijzing.Windows
                 FullBlueCardString = "";
 
                 tbRed.Text = NewRedCards[redCardCount].ToString();
-
                 NewYellowArray = redCardCount;
-
-                Array = NewYellowCards[NewYellowArray].Split(delimiterChars);
-
-                Array = Array.Take(Array.Count() - 1).ToArray();
 
                 SingleYellowCards.Clear();
 
-                foreach (string element in Array)
+                List<string> temporaryYellow = new List<string>();
+                List<string> SecondYellowCards = new List<string>();
+
+                SecondYellowCards = NewYellowCards;
+                YellowCardLength--;
+                //string maken met alleen de string die ik moet hebben
+                GetSelectedYellow++;
+                string SelectedYellow = SecondYellowCards[GetSelectedYellow];
+
+                temporaryYellow.Add(SelectedYellow);
+
+                foreach (string element in temporaryYellow[0].Split(delimiterChars))
                 {
                     SingleYellowCards.Add(element);
                 }
 
+                SingleYellowCards.Remove("");
+
+                YellowCardLength = SingleYellowCards.Count() - 1;
+
                 tbYellow.Text = SingleYellowCards[0];
 
-
-
                 cardCount = 0;
+                YellowCardCount = 0;
                 blueCards.Clear();
                 conn.Open();
                 MySqlCommand command = conn.CreateCommand();
@@ -188,7 +208,7 @@ namespace MijnGebruiksaanwijzing.Windows
                 btnPastBijMij.IsEnabled = true;
                 btnPastNietBijMij.IsEnabled = true;
                 btnVolgende.IsEnabled = false;
-
+                selectedBlueCards.Clear();
             }
         }
 
@@ -248,6 +268,7 @@ namespace MijnGebruiksaanwijzing.Windows
 
         private void nextYellowCard_Click(object sender, RoutedEventArgs e)
         {
+
             if (YellowCardCount == YellowCardLength)
             {
                 YellowCardCount = YellowCardLength;
