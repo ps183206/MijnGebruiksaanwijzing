@@ -19,8 +19,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml;
-using Path = System.IO.Path;
 
 namespace MijnGebruiksaanwijzing.Windows
 {
@@ -29,206 +27,121 @@ namespace MijnGebruiksaanwijzing.Windows
     /// </summary>
     public partial class EindResultaat : Window
     {
-        List<string> redList = new List<string>();
-        List<string> yellowList = new List<string>();
-        List<string> blueList = new List<string>();
+		List<string> redList = new List<string>();
+		List<string> yellowList = new List<string>();
+		List<string> blueList = new List<string>();
 
-        string documentName;
-        int exported;
+		List<string> FinalyellowList = new List<string>();
+		List<string> FinalBlueList = new List<string>();
 
-        public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
+		string FullYellowString { get; set; }
+
+		char delimiterChars = '_';
+
+		public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
         {
             InitializeComponent();
 
-            // GridView/ListView laten vullen met de resultaten van het gespeelde spel
-            redList.Add("Rood kaartje 1");
-            redList.Add("Rood kaartje 2");
-            redList.Add("Rood kaartje 3");
-            yellowList.Add("Geel kaartje 1, Geel kaartje 2");
-            yellowList.Add("Geel kaartje 3");
-            yellowList.Add("Geel kaartje 4, Geel kaartje 5, Geel kaartje 6");
-            blueList.Add("Blauw kaartje 1");
-            blueList.Add("Blauw kaartje 2");
-            blueList.Add("Blauw kaartje 3, Blauw kaartje 4");
+			redList = redCards;
+			yellowList = yellowCards;
+			//ieder item in yellowlist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+			foreach (string item in yellowList)
+			{
+				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
+				foreach (string element in item.Split(delimiterChars))
+				{
+					//zet items in deze list als:		[0]dit is een test
+					//									[1]dit is nog een test
+					FinalyellowList.Add(element);
+				}
+			}
+			blueList = blueCards;
+			//ieder item in bluelist dus hiermee bedoel [0] [1] [2] bijvoorbeeld
+			foreach (string item in blueList)
+			{
+				//ieder element in item dus dit is de inhoud van bijv [0] = dit is een test_dit is nog een test
+				foreach (string element in item.Split(delimiterChars))
+				{
+					//zet items in deze list als:		[0]dit is een test
+					//									[1]dit is nog een test
+					FinalBlueList.Add(element);
+				}
+			}
 
-            var lvRedData = new ListView();
-            foreach (var item in redList)
-            {
-                lvRed.Items.Add(item);
-            }
+			// GridView/ListView laten vullen met de resultaten van het gespeelde spel
+			//redList.Add("Rood kaartje 1"); 
+			//redList.Add("Rood kaartje 2"); 
+			//redList.Add("Rood kaartje 3"); 
+			//yellowList.Add("Geel kaartje 1, Geel kaartje 2"); 
+			//yellowList.Add("Geel kaartje 3"); 
+			//yellowList.Add("Geel kaartje 4, Geel kaartje 5, Geel kaartje 6"); 
+			//blueList.Add("Blauw kaartje 1"); 
+			//blueList.Add("Blauw kaartje 2"); 
+			//blueList.Add("Blauw kaartje 3, Blauw kaartje 4"); 
 
-            var lvYellowData = new ListView();
-            foreach (var item in yellowList)
-            {
-                lvYellow.Items.Add(item);
-            }
+			var lvRedData = new ListView();
+			foreach (var item in redList)
+			{
+				lvRed.Items.Add(item);
+			}
 
-            var lvBlueData = new ListView();
-            foreach (var item in blueList)
-            {
-                lvBlue.Items.Add(item);
-            }
-        }
+			var lvYellowData = new ListView();
+			foreach (var item in FinalyellowList)
+			{
+				lvYellow.Items.Add(item);
+			}
+
+			var lvBlueData = new ListView();
+			foreach (var item in FinalBlueList)
+			{
+				lvBlue.Items.Add(item);
+			}
+		}
 
         private void btnSaveResult_Click(object sender, RoutedEventArgs e)
         {
-            WriteToPdf();
+            ExportToPdf();
         }
 
-		//private void ExportToPdf()
-		//{
-		//	try
-		//	{
-		//		var pdfDoc = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
-		//		string path = $"C:\\Users\\{Environment.UserName}\\Downloads\\{Assembly.GetEntryAssembly().GetName().Name}.pdf";
-		//		PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
-		//		pdfDoc.Open();
-
-		//		var headerTable = new PdfPTable(new[] { 1.25f, 1.25f, 1.25f })
-		//		{
-		//			WidthPercentage = 75,
-		//			DefaultCell = { MinimumHeight = 22f }
-		//		};
-
-		//		headerTable.AddCell("Belemmering");
-		//		headerTable.AddCell("Oplossing");
-		//		headerTable.AddCell("Wie kan mij daarbij helpen?");
-		//		headerTable.AddCell(redList[0]);
-		//		headerTable.AddCell(yellowList[0]);
-		//		headerTable.AddCell(blueList[0]);
-		//		headerTable.AddCell(redList[1]);
-		//		headerTable.AddCell(yellowList[1]);
-		//		headerTable.AddCell(blueList[1]);
-		//		headerTable.AddCell(redList[2]);
-		//		headerTable.AddCell(yellowList[2]);
-		//		headerTable.AddCell(blueList[2]);
-
-
-		//		pdfDoc.Add(headerTable);
-
-		//		pdfDoc.Close();
-
-		//		MessageBox.Show("Resultaten gedownload als Pdf!");
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Downloaden mislukt.");
-		//	}
-		//}
-	
-	
-		private void WriteToPdf()
+		private void ExportToPdf()
 		{
-            XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(@"..\..\XML\MijnGebruiksaanwijzing.xml");
+			try
+			{
+				var pdfDoc = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
+				string path = $"C:\\Users\\{Environment.UserName}\\Downloads\\{Assembly.GetEntryAssembly().GetName().Name}.pdf";
+				PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
+				pdfDoc.Open();
 
-            //Sample XML
-            var xml = xmldoc;
+				var headerTable = new PdfPTable(new[] { 1.25f, 1.25f, 1.25f })
+				{
+					WidthPercentage = 75,
+					DefaultCell = { MinimumHeight = 22f }
+				};
 
-            documentName = DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
+				headerTable.AddCell("Belemmering");
+				headerTable.AddCell("Oplossing");
+				headerTable.AddCell("Wie kan mij daarbij helpen?");
+				headerTable.AddCell(redList[0]);
+				headerTable.AddCell(yellowList[0]);
+				headerTable.AddCell(blueList[0]);
+				headerTable.AddCell(redList[1]);
+				headerTable.AddCell(yellowList[1]);
+				headerTable.AddCell(blueList[1]);
+				headerTable.AddCell(redList[2]);
+				headerTable.AddCell(yellowList[2]);
+				headerTable.AddCell(blueList[2]);
 
-            //File to write to
-            var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), documentName + ".pdf");
 
-            //Standard PDF creation, nothing special here
-            using (var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                using (var doc = new Document())
-                {
-                    using (var writer = PdfWriter.GetInstance(doc, fs))
-                    {
-                        doc.SetPageSize(PageSize.A4.Rotate());
-                        doc.Open();
+				pdfDoc.Add(headerTable);
 
-                        var t = new PdfPTable(4);
+				pdfDoc.Close();
 
-                        t.WidthPercentage = 100; //table width to 100per
-
-                        //Flag that the first row should be repeated on each page break
-                        t.HeaderRows = 1;
-
-                        BaseColor redtxtColor = new BaseColor(255, 144, 150);
-                        BaseColor yellowtxtColor = new BaseColor(250, 220, 60);
-                        BaseColor bluetxtColor = new BaseColor(140, 170, 255);
-                        BaseColor opmtxtColor = new BaseColor(175, 230, 230);
-                        BaseColor normaltxtColor = new BaseColor(0, 0, 0);
-
-                        BaseFont bfTimes = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
-
-                        Font redHelvetica = new Font(bfTimes, 12, Font.BOLD, redtxtColor);
-                        Font yellowHelvetica = new Font(bfTimes, 12, Font.BOLD, yellowtxtColor);
-                        Font blueHelvetica = new Font(bfTimes, 12, Font.BOLD, bluetxtColor);
-                        Font opmHelvetica = new Font(bfTimes, 12, Font.BOLD, opmtxtColor);
-                        Font normalHelvetica = new Font(bfTimes, 12, Font.NORMAL, normaltxtColor);
-
-                        t.AddCell(new Phrase("Belemmering", redHelvetica));
-                        t.AddCell(new Phrase("Oplossing", yellowHelvetica));
-                        t.AddCell(new Phrase("Wie kan mij daarbij helpen?", blueHelvetica));
-                        t.AddCell(new Phrase("Opmerking", opmHelvetica));
-                        t.CompleteRow();
-
-                        //Loop through each CD row (this is so we can call complete later on)
-                        foreach (XmlNode CD in xml.SelectSingleNode("Game").SelectNodes("Cards"))
-                        {
-                            var Cards = new Dictionary<string, string>
-                                {
-                                    { "RedCard", "" },
-                                    { "YellowCard", "" },
-                                    { "BlueCard", "" },
-                                    { "Opmerking", "" }
-                                };
-
-                            //Loop through each child of the current CD. Limit the number of children to our initial count just in case there are extra nodes.
-                            foreach (XmlNode node in CD.ChildNodes)
-                            {
-                                if (node.Name == "YellowCard" || node.Name == "BlueCard")
-                                {
-                                    Cards[node.Name] += " - " + node.InnerText + System.Environment.NewLine;
-                                }
-                                else
-                                {
-                                    Cards[node.Name] += node.InnerText + System.Environment.NewLine;
-                                }
-                            }
-
-                            BaseColor redColor = new BaseColor(255, 195, 195);
-                            BaseColor yellowColor = new BaseColor(255, 255, 195);
-                            BaseColor blueColor = new BaseColor(195, 210, 255);
-                            BaseColor opmColor = new BaseColor(195, 255, 255);
-
-                            PdfPCell redCell = new PdfPCell();
-                            PdfPCell yellowCell = new PdfPCell();
-                            PdfPCell blueCell = new PdfPCell();
-                            PdfPCell opmCell = new PdfPCell();
-
-                            redCell.BackgroundColor = redColor;
-                            yellowCell.BackgroundColor = yellowColor;
-                            blueCell.BackgroundColor = blueColor;
-                            opmCell.BackgroundColor = opmColor;
-
-                            redCell.AddElement(new Phrase(Cards["RedCard"], normalHelvetica));
-                            yellowCell.AddElement(new Phrase(Cards["YellowCard"], normalHelvetica));
-                            blueCell.AddElement(new Phrase(Cards["BlueCard"], normalHelvetica));
-                            opmCell.AddElement(new Phrase(Cards["Opmerking"], normalHelvetica));
-
-                            t.AddCell(redCell);
-                            t.AddCell(yellowCell);
-                            t.AddCell(blueCell);
-                            t.AddCell(opmCell);
-
-                            //Just in case any rows have too few cells fill in any blanks
-                            t.CompleteRow();
-                        }
-
-                        //Add the table to the document
-                        doc.Add(t);
-
-                        doc.Close();
-                    }
-                }
-            }
-            exported = 1;
-            MessageBox.Show("Het PDF bestand is succesvol geëxporteerd naar uw bureaublad.");
-        }
+				MessageBox.Show("Resultaten gedownload als Pdf!");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Downloaden mislukt.");
+			}
+		}
 	}
 }
