@@ -12,24 +12,32 @@
     </Window.Background>
     
     <Grid>
-        <Label Content="Eindresultaat" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="75"></Label>
+        <Label Content="Spel resultaten" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="75"></Label>
         <!-- ListView/GridView gesorteerd per kleur (belemmering/oplosiing/hulppersoon) en een kolom om aanvullingen te geven per rij met een textbox per cel -->
-        <ListView VerticalAlignment="Center" HorizontalAlignment="Center" Width="1500" Height="750" FontSize="25">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Height" Value="50" />
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="Belemmeringen" Width="375"/>
-                    <GridViewColumn Header="Oplossingen" Width="375"/>
-                    <GridViewColumn Header="Wie kan mij daarbij helpen?" Width="375"/>
-                    <GridViewColumn Header="Aanvulling" Width="375"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ListView x:Name="lvRed" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Height="750" FontSize="25">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Belemmering" Width="400"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lvYellow" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Height="750" FontSize="25">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Oplossing" Width="400"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lvBlue" VerticalAlignment="Center" HorizontalAlignment="Center" Width="405" Height="750" FontSize="25">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Wie kan mij daarbij helpen?" Width="400"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
         <!-- Een knop om de resultaten met bijgegeven aanvullingen op te slaan en deze gelijk te bekijken -->
-        <Button x:Name="btnSaveResults" Content="Opslaan" Width="500" Height="70" FontSize="40" Background="White" VerticalAlignment="Bottom" Margin="40" Click="btnSaveResult_Click"></Button>
+        <Button x:Name="btnSaveResults" Content="Downloaden" Width="500" Height="70" DockPanel.Dock="Left" FontSize="40" Background="White" VerticalAlignment="Bottom" Margin="40" Click="btnSaveResult_Click"></Button>
     </Grid>
 </Window>
