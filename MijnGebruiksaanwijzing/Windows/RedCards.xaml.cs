@@ -75,7 +75,7 @@ namespace MijnGebruiksaanwijzing.Windows
             this.Close();
         }
 
-        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbRed.Text;
             selectedRedCards.Add(tbPastWel.Text);
@@ -93,11 +93,12 @@ namespace MijnGebruiksaanwijzing.Windows
                 btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
 
-        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastNietBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
             tbPastNiet.Text = tbRed.Text;
             Length = redCards.Count;
@@ -114,7 +115,8 @@ namespace MijnGebruiksaanwijzing.Windows
                 btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
 

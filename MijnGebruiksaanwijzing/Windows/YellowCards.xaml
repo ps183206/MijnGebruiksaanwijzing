@@ -44,8 +44,8 @@
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Margin="25">
-            <!--<Image Source="/Images/green_arrow.png" Width="125"/>-->
-            <Button x:Name="btnPastBijMij" Width="180px" Height="75px" Background="LightGreen" Content="Past Wel Bij Mij" FontSize="20" Click="btnPastBijMij_Click"></Button>
+            <Image x:Name="btnPastBijMij" Source="/Images/green_arrow.png" Width="120" MouseDown="btnPastBijMij_MouseDown"/>
+            <!--<Button x:Name="btnPastBijMij" Width="180px" Height="75px" Background="LightGreen" Content="Past Wel Bij Mij" FontSize="20" Click="btnPastBijMij_Click"></Button>-->
         </Grid>
         <Grid x:Name="gridYellow" Grid.Row="1" Grid.Column="2" Background="White" Margin="25">
             <Border BorderThickness="3" BorderBrush="#FFCC00" Margin="15" CornerRadius="10">
@@ -53,8 +53,8 @@
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3" Margin="25">
-            <!--<Image Source="/Images/red_arrow.png" Width="125"/>-->
-            <Button x:Name="btnPastNietBijMij" Width="180px" Height="75px" Background="salmon" Content="Past Niet Bij Mij" FontSize="20" Click="btnPastNietBijMij_Click"></Button>
+            <Image x:Name="btnPastNietBijMij" Source="/Images/red_arrow.png" Width="120" MouseDown="btnPastNietBijMij_MouseDown"/>
+            <!--<Button x:Name="btnPastNietBijMij" Width="180px" Height="75px" Background="salmon" Content="Past Niet Bij Mij" FontSize="20" Click="btnPastNietBijMij_Click"></Button>-->
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4" Background="White" Margin="25">
             <Border BorderThickness="3" BorderBrush="#FFCC00" Margin="15" CornerRadius="10" Opacity="0.5">
@@ -62,10 +62,8 @@
             </Border>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <Label x:Name="lblCurrentCard" Content="" FontSize="40" HorizontalAlignment="Center"></Label>
-                <Button Name="btnVolgende" Background="White" Margin="25" Height="60" Content="Volgende" FontSize="36" Click="btnVolgende_Click" IsEnabled="False"/>
-            </StackPanel>
+            <Label x:Name="lblCurrentCard" Content="" FontSize="40" HorizontalAlignment="Center"></Label>
+            <Button Name="btnVolgende" Background="White" Margin="25 0" Height="60" Content="Volgende" FontSize="36" VerticalAlignment="Top" Click="btnVolgende_Click" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

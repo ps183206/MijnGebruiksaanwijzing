@@ -147,14 +147,17 @@ namespace MijnGebruiksaanwijzing.Windows
                 lblCurrentCard.Content = cardCount + 1 + "/" + Length;
                 btnPastBijMij.IsEnabled = true;
                 btnPastNietBijMij.IsEnabled = true;
-                btnVolgende.IsEnabled = false;
+                btnPastBijMij.Opacity = 1;
+                btnPastNietBijMij.Opacity = 1;
+                gridYellow.Visibility = Visibility.Visible;
+                btnVolgende.Visibility = Visibility.Hidden;
                 selectedYellowCards.Clear();
 
             }
 
         }
 
-        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbYellow.Text;
             selectedYellowCards.Add(tbPastWel.Text);
@@ -167,14 +170,16 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbYellow.Text = "";
+                gridYellow.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
 
-        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastNietBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
 
             tbPastNiet.Text = tbYellow.Text;
@@ -187,12 +192,13 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbYellow.Text = "";
+                gridYellow.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
-
     }
 }

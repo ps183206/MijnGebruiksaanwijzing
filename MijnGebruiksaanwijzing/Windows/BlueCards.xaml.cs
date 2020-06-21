@@ -114,6 +114,8 @@ namespace MijnGebruiksaanwijzing.Windows
 
 
             GetSelectedYellow = 0;
+
+            //lblCurrentYellowCard.Content = YellowCardCount + 1 + "/" + YellowCardLength + 1;
         }
 
         private void btnVolgende_Click(object sender, RoutedEventArgs e)
@@ -207,12 +209,17 @@ namespace MijnGebruiksaanwijzing.Windows
 
                 btnPastBijMij.IsEnabled = true;
                 btnPastNietBijMij.IsEnabled = true;
-                btnVolgende.IsEnabled = false;
+                btnPastBijMij.Opacity = 1;
+                btnPastNietBijMij.Opacity = 1;
+                gridBlue.Visibility = Visibility.Visible;
+                btnVolgende.Visibility = Visibility.Hidden;
                 selectedBlueCards.Clear();
+
+                //lblCurrentYellowCard.Content = YellowCardCount + 1 + "/" + YellowCardLength + 1;
             }
         }
 
-        private void btnPastBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
             tbPastWel.Text = tbBlue.Text;
             selectedBlueCards.Add(tbPastWel.Text);
@@ -226,14 +233,16 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbBlue.Text = "";
+                gridBlue.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
 
-        private void btnPastNietBijMij_Click(object sender, RoutedEventArgs e)
+        private void btnPastNietBijMij_MouseDown(object sender, RoutedEventArgs e)
         {
             tbPastNiet.Text = tbBlue.Text;
 
@@ -245,10 +254,12 @@ namespace MijnGebruiksaanwijzing.Windows
             }
             catch (Exception)
             {
-                tbBlue.Text = "";
+                gridBlue.Visibility = Visibility.Hidden;
+                btnVolgende.Visibility = Visibility.Visible;
                 btnPastBijMij.IsEnabled = false;
                 btnPastNietBijMij.IsEnabled = false;
-                btnVolgende.IsEnabled = true;
+                btnPastBijMij.Opacity = 0.5;
+                btnPastNietBijMij.Opacity = 0.5;
             }
         }
 
@@ -258,12 +269,15 @@ namespace MijnGebruiksaanwijzing.Windows
             {
                 YellowCardCount = 0;
                 tbYellow.Text = SingleYellowCards[YellowCardCount];
+                lblCurrentYellowCard.Content = YellowCardCount;
             }
             else
             {
                 YellowCardCount--;
                 tbYellow.Text = SingleYellowCards[YellowCardCount];
             }
+
+            //lblCurrentYellowCard.Content = YellowCardCount + 1 + "/" + YellowCardLength + 1;
         }
 
         private void nextYellowCard_Click(object sender, RoutedEventArgs e)
@@ -279,6 +293,8 @@ namespace MijnGebruiksaanwijzing.Windows
                 YellowCardCount++;
                 tbYellow.Text = SingleYellowCards[YellowCardCount];
             }
+
+            //lblCurrentYellowCard.Content = YellowCardCount + 1 + "/" + YellowCardLength + 1;
         }
 
 
