@@ -31,7 +31,7 @@ namespace MijnGebruiksaanwijzing.Windows
 		List<string> yellowList = new List<string>();
 		List<string> blueList = new List<string>();
 		
-		public EindResultaat()
+		public EindResultaat(List<string> redCards, List<string> yellowCards, List<string> blueCards)
         {
             InitializeComponent();
 
