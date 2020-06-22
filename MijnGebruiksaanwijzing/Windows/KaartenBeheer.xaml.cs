@@ -204,5 +204,14 @@ namespace MijnGebruiksaanwijzing.Windows
                 conn.Close();
             }
         }
+
+        private void btnTerug_Click(object sender, RoutedEventArgs e)
+        {
+            LoginScreen loginscreen = new LoginScreen();
+            loginscreen.Top = 0;
+            loginscreen.Left = 0;
+            loginscreen.Show();
+            this.Close();
+        }
     }
 }

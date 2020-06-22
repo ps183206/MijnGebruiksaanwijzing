@@ -15,13 +15,14 @@
         <ImageBrush ImageSource="/Images/light_wood_background_lighter.jpg"/>
     </Window.Background>
     <Grid>
+        <Button x:Name="btnTerug" Content="Terug" Width="190" Height="50" Background="#25126E" Foreground="White" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Click="btnTerug_Click"></Button>
         <Border Padding="30" Background="White" Width="500" Height="410">
             <StackPanel VerticalAlignment="Bottom">
                 <Label Content="Inloggen" HorizontalAlignment="Center" Foreground="#D60096" FontWeight="SemiBold" FontSize="35"/>
                 <Label Content="Gebruikersnaam" Margin="12 0 12 0" FontSize="20"/>
                 <TextBox x:Name="tbUsername" Margin="12 0 12 12" FontSize="20" Padding="8" Text=""/>
                 <Label Content="Wachtwoord" Margin="12 0 12 0" FontSize="20"/>
-                <TextBox x:Name="tbPassword" Margin="12 0 12 12" FontSize="20" Padding="8" Text=""/>
+                <PasswordBox x:Name="pbPassword" Margin="12 0 12 12" FontSize="20" Padding="8" Password=""/>
                 <Button x:Name="btnLogin" Content="Inloggen" Background="#D60096" Foreground="White" Margin="12" Padding="8" FontSize="22" FontWeight="SemiBold" Style="{DynamicResource ButtonStyle1}" Click="btnLogin_Click">
                     <Button.Resources>
                         <Style x:Key="FocusVisual">

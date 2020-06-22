@@ -11,7 +11,8 @@
     </Window.Background>
     <Grid>
         <!--terug knop linksboven -->
-        <Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,948" Padding="8" FontSize="22" FontWeight="SemiBold"  />
+        <!--<Button x:Name="btnBack" Content="Terug" Background="Red" Foreground="White" Margin="1688,25,25,948" Padding="8" FontSize="22" FontWeight="SemiBold"  />-->
+        <Button x:Name="btnTerug" Content="Terug" Width="190" Height="50" Background="#25126E" Foreground="White" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Click="btnTerug_Click"></Button>
         <!--grid view maken voor de rode kaartjes -->
         <ListView Margin="50,50,1152,50" x:Name="ListKaarten" SelectionChanged="ListKaarten_SelectionChanged"></ListView>
         <!-- gridview maken voor de gele kaartjes-->

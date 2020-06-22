@@ -61,7 +61,7 @@ namespace MijnGebruiksaanwijzing
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (tbUsername.Text != "" && tbPassword.Text != "")
+            if (tbUsername.Text != "" && pbPassword.Password != "")
             {
                 CheckLogin();
             }
@@ -105,7 +105,7 @@ namespace MijnGebruiksaanwijzing
             //conn.Close();
 
             string username = tbUsername.Text;
-            string password = tbPassword.Text;
+            string password = pbPassword.Password;
 
             using (MySqlCommand cmd = new MySqlCommand($"SELECT Username, Password FROM users WHERE Username = '{username}'"))
             {
@@ -118,7 +118,7 @@ namespace MijnGebruiksaanwijzing
                     string user = sdr["Username"].ToString();
                     string pass = sdr["Password"].ToString();
 
-                    if (username == user || password == pass)
+                    if (username == user && password == pass)
                     {
                         KaartenBeheer kaartenbeheer = new KaartenBeheer();
                         kaartenbeheer.Top = 0;
@@ -133,6 +133,15 @@ namespace MijnGebruiksaanwijzing
                 }
                 conn.Close();
             }
+        }
+
+        private void btnTerug_Click(object sender, RoutedEventArgs e)
+        {
+            HomeLeerling homeleerling = new HomeLeerling();
+            homeleerling.Top = 0;
+            homeleerling.Left = 0;
+            this.Close();
+            homeleerling.Show();
         }
     }
 }
